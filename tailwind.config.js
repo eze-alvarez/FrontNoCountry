@@ -12,6 +12,9 @@ export default {
       backgroundColor: {
         'blue-Nav': 'rgba(3, 67, 99, 0.8)',
       },
+      backgroundImage: {
+        'degradado': 'linear-gradient(135deg, rgba(255,138,0,0.443) 15%, rgba(246,246,246,1) 100%)',
+      },
       colors:{
         "blue-text": "#006BA0",
         "blue-title": "#034363",
