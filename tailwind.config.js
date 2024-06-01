@@ -21,12 +21,20 @@ export default {
         "btn-orange": "#FF8A00",
         "btn-blue": "#62A2C2",
         "orange-title": "#FF8A00",
-        "yellow-bar" : "#FFB905",
-        "green-bar" : "#2EBF7E"
+        "orange-bar" : "#FFB905",
+        "green-bar" : "#2EBF7E",
+        "main-white" : "#f9f9f9",
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'], 
       },
+      spacing: {
+        522: "512px",
+        370: "360px",
+        201: "201px",
+        110: "110px",
+        42: "42px",
+    },
     },
   },
   plugins: [],

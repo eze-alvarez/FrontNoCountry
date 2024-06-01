@@ -10,6 +10,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 html {
@@ -18,4 +19,16 @@ html {
 
 body {
   @apply font-poppins;
+}
+
+p {
+  color: #006ba0;
+}
+
+h1 {
+  text-align: center;
+  color: #034363;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 2rem;
 }
