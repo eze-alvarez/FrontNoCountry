@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import logoNav from '../../assets/logo.png';
+import logoNavBlue from '../../assets/logo azul.png';
+import logoNavWhite from '../../assets/logo blanco.png';
 import { FaTwitter, FaLinkedinIn, FaInstagram, FaWindowClose, FaBars } from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
 
@@ -24,7 +25,7 @@ export default function Navbar() {
         
         {/* Logo */}
         <NavLink to="/" className="cursor-pointer font-bold">
-          <img src={logoNav} alt="mano" className="h-11 w-auto cursor-pointer" />
+          <img src={logoNavBlue} alt="mano" className="h-[22px] w-[95px]  cursor-pointer" />
         </NavLink>
 
         {/* Desktop Menu */}
@@ -66,8 +67,8 @@ export default function Navbar() {
         
         {/* Close Button */}
         <div className="flex w-full items-center justify-end">
-          <div onClick={handleNav} className="cursor-pointer border-2 border-yellow1 rounded-md p-1">
-            <FaWindowClose size={25} />
+          <div onClick={handleNav} className="cursor-pointer border-2 border-white rounded-md p-1">
+            <FaWindowClose size={25} className='text-white'/>
           </div>
         </div>
 
@@ -91,31 +92,31 @@ export default function Navbar() {
 
         {/* Logo in Mobile Menu */}
         <NavLink to="/" >
-          <img src={logoNav} alt="logo" width={205} height={75} className="cursor-pointer" />
+          <img src={logoNavWhite} alt="logo" width={150} height={35} className="cursor-pointer" />
         </NavLink>
 
         {/* Contacto in Mobile Menu */}
         <div>
           <h2 className='text-orange-title font-medium text-base'>CONTACTO</h2>
-          <p className='text-sm mt-4'>Tel: (0232) 11234567</p>
-          <p className='text-sm mt-4'>contacto@donar</p>
+          <p className='text-sm mt-4 text-white'>Tel: (0232) 11234567</p>
+          <p className='text-sm mt-4 text-white'>contacto@donar</p>
 
         {/* Social Media Links*/}
           <h2 className='text-orange-title font-medium text-base mt-4'>REDES SOCIALES</h2>
           <ul className='flex gap-2 mt-4'>
             <li>
               <a href="" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-x-2 bg-btn-blue w-[38px] h-[38px] rounded-lg">
-                <FaInstagram size={25} className="cursor-pointer hover:fill-yellow1" />
+                <FaInstagram size={25} className="cursor-pointer text-white hover:fill-btn-orange" />
               </a>
             </li>
             <li className=''>
               <a href="" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-x-2 bg-btn-blue w-[38px] h-[38px] rounded-lg">
-                <FaLinkedinIn size={25} className="cursor-pointer hover:fill-yellow1" />
+                <FaLinkedinIn size={25} className="cursor-pointer text-white hover:fill-btn-orange" />
               </a>
             </li>
             <li className=''>
               <a href="" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-x-2 bg-btn-blue w-[38px] h-[38px] rounded-lg">
-                <FaTwitter size={25} className="cursor-pointer hover:fill-yellow1" />
+                <FaTwitter size={25} className="cursor-pointer text-white hover:fill-btn-orange" />
               </a>
             </li>
           </ul>
