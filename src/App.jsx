@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Header from './components/Header/header';
-
 // import About from './pages/About'
 // import Campañas from './pages/Campañas'
 // import DonanteLogin from './pages/DonanteLogin'
