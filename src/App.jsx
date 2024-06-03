@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/Home';
-import Header from './components/Header/header';
+import Navbar from './components/Header/Navbar';
+import Footer from './components/Footer/Footer';
 // import About from './pages/About'
 // import Campañas from './pages/Campañas'
 // import DonanteLogin from './pages/DonanteLogin'
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="bg-degradado min-h-screen">
       <Router>
-            <Header />
+            <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
                 {/* <Route path="/login" element={<Login />} />
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/campañas" element={<Campañas />} />
                 <Route path="/quienes-somos" element={<CampañaCard />} /> */}
             </Routes>
+            <Footer />
         </Router>
     </div>
   )
