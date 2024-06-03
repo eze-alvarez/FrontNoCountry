@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Navbar from './components/navbar/Navbar'
-import Footer from './components/footer/Footer';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Home from './pages/Home'
+
+// import Footer from './components/footer/Footer';
 // import About from './pages/About'
 // import Campañas from './pages/Campañas'
 // import DonanteLogin from './pages/DonanteLogin'
@@ -12,21 +12,18 @@ import Footer from './components/footer/Footer';
 function App() {
 
   return (
-    <div className="bg-degradado min-h-screen">
-      <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                {/* <Route path="/login" element={<Login />} />
+    <Router>
+      {/* <Routes> */}
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/login" element={<Login />} />
                 <Route path="/quienes-somos" element={<DonanteLogin />} />
                 <Route path="/quienes-somos" element={<InstitucionLogin />} />
                 <Route path="/quienes-somos" element={<About />} />
                 <Route path="/campañas" element={<Campañas />} />
-                <Route path="/quienes-somos" element={<CampañaCard />} /> */}
-            </Routes>
-            <Footer />
-        </Router>
-    </div>
+                <Route path="/quienes-somos" element={<CampañaCard />} /> /}
+      </Routes>
+      {/ <Footer /> */}
+    </Router>
   )
 }
 
