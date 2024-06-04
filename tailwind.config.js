@@ -14,6 +14,7 @@ export default {
       },
       backgroundImage: {
         'degradado': 'linear-gradient(135deg, rgba(255,138,0,0.443) 15%, rgba(246,246,246,1) 100%)',
+        'fondo-card': 'linear-gradient(180deg, rgba(2,0,36,0) 41.5%, rgba(255,210,174,1) 41.5%, rgba(158,132,111,1) 250%) '
       },
       colors:{
         "blue-text": "#006BA0",
@@ -34,6 +35,9 @@ export default {
         201: "201px",
         110: "110px",
         42: "42px",
+        340: "340px",
+        407: "407px",
+        327: "327px",
     },
     },
   },
