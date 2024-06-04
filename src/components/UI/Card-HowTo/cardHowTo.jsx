@@ -3,7 +3,7 @@ import React from "react";
 
 const CardHowTo = ({IMG,H1,P}) => {
     return (
-        <div  className="  max-w-340 h-407 flex flex-col items-center relative">
+        <div  className=" m-auto  max-w-340 h-407 flex flex-col items-center relative">
             <div
                 className="circle"
                 class=" bg-fondo-card rounded-full w-48 h-48 relative bottom-50 z-10 flex items-center justify-center"
