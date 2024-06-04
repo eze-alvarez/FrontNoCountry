@@ -3,6 +3,7 @@ import Home from './pages/Home/Home';
 import Navbar from './components/Header/Navbar';
 import Footer from './components/Footer/Footer';
 import Campaign from './pages/Campaign/campaign';
+import AllCampaigns from './pages/AllCampaigns/allCampaigns';
 // import About from './pages/About'
 // import Campañas from './pages/Campañas'
 // import DonanteLogin from './pages/DonanteLogin'
@@ -19,6 +20,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path='/campaign/:id' element={<Campaign/>} />
+                <Route path='/allCampaigns' element={<AllCampaigns/>} />
                 {/* <Route path="/login" element={<Login />} />
                 <Route path="/quienes-somos" element={<DonanteLogin />} />
                 <Route path="/quienes-somos" element={<InstitucionLogin />} />
