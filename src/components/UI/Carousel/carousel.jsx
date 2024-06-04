@@ -2,11 +2,10 @@ import React from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import CardCampaign from '../Card-Campaign/cardCampaign';
 
 
-const Carousel = ({array}) => {
-     const cardsInfo = array
+
+const Carousel = ({children}) => {
      const settings = {
           dots:true,
           infinite: false,
@@ -21,8 +20,6 @@ const Carousel = ({array}) => {
                  settings: {
                    slidesToShow: 3,
                    slidesToScroll: 3,
-                   /* infinite: true,
-                   dots: true */
                  }
                },
                {
@@ -45,11 +42,7 @@ const Carousel = ({array}) => {
   return (
     <div className=''>
           <Slider {...settings}>
-               {cardsInfo.map((card, index) => (
-                    <div className=' ' key={index}>
-                        <CardCampaign data = {card} />
-                    </div>
-                ))}
+               {children}
           </Slider>
     </div>
   )

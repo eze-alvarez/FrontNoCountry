@@ -1,10 +1,11 @@
+import HowToDonate from "../../components/HowDonate/howToDonate";
 import SectionCampaigns from "../../components/Sect-Campaigns/sectionCampaigns";
-// import CardCampaign from "../../components/UI/Card-Campaign/cardCampaign";
+
 
 export default function Home() {
   return (
-    <div className="w-full h-screen px-4">
-    
+    <div className="w-full px-4">
+      <HowToDonate />
       <SectionCampaigns />
     </div>
   )
