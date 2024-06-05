@@ -10,7 +10,8 @@ export default {
         '18p': '18%', // Añade una clase personalizada para el desenfoque específico
       },
       backgroundColor: {
-        'blue-Nav': 'rgba(3, 67, 99, 0.8)',
+        'blue-Nav': 'rgba(3, 67, 99, 0.95)',
+        'nav': '#FDECDF'
       },
       backgroundImage: {
         'degradado': 'linear-gradient(135deg, rgba(255,138,0,0.443) 15%, rgba(246,246,246,1) 100%)',
