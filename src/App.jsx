@@ -4,11 +4,11 @@ import Navbar from './components/Header/Navbar';
 import Footer from './components/Footer/Footer';
 import Campaign from './pages/Campaign/campaign';
 import AllCampaigns from './pages/AllCampaigns/allCampaigns';
+import { Login } from "./pages/login/Login"
+import { Registro } from './pages/registro/Registro'
+import {RegistroSolicitante} from './pages/registroSolicitante/RegistroSolicitante'
 // import About from './pages/About'
 // import Campañas from './pages/Campañas'
-// import DonanteLogin from './pages/DonanteLogin'
-// import InstitucionLogin from './pages/InstitucionLogin'
-// import Login from "./pages/Login"
 // import CampañaCard from "./pages/CampañaCard"
 
 function App() {
@@ -16,20 +16,20 @@ function App() {
   return (
     <div className="bg-degradado min-h-screen">
       <Router>
-            <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path='/campaign/:id' element={<Campaign/>} />
-                <Route path='/allCampaigns' element={<AllCampaigns/>} />
-                {/* <Route path="/login" element={<Login />} />
-                <Route path="/quienes-somos" element={<DonanteLogin />} />
-                <Route path="/quienes-somos" element={<InstitucionLogin />} />
-                <Route path="/quienes-somos" element={<About />} />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path='/campaign/:id' element={<Campaign />} />
+          <Route path='/allCampaigns' element={<AllCampaigns />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
+          <Route path="/registroSolicitante" element={<RegistroSolicitante />} />
+                {/*<Route path="/quienes-somos" element={<About />} />
                 <Route path="/campañas" element={<Campañas />} />
                 <Route path="/quienes-somos" element={<CampañaCard />} /> */}
-            </Routes>
-            <Footer />
-        </Router>
+        </Routes>
+        <Footer />
+      </Router>
     </div>
   )
 }
