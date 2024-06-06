@@ -11,8 +11,7 @@ export default function Navbar() {
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
-  };
-
+  }
   return (
     <nav className="fixed w-full h-14   z-30 top-0 text-blue-title bg-nav">
       <div className="container mx-auto xl:max-w-5xl 2xl:max-w-7xl flex justify-between items-center h-full w-full px-8">
@@ -86,7 +85,7 @@ export default function Navbar() {
               <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className="mt-11">Quiénes somos</li>
               </NavLink>
-              <NavLink to="/campañas" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
+              <NavLink to="/allCampaigns" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className=" mt-11">Campañas</li>
               </NavLink>  
             </ul>
