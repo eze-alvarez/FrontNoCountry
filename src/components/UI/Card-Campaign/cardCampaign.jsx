@@ -2,6 +2,7 @@ import React from "react";
 import TestImg from "../../../assets/Images/CardsImg/Firefigthers.png";
 import Heart from "../../../assets/Images/commonImg/heart.png";
 import { info } from "autoprefixer";
+import { Link } from "react-router-dom";
 
 const CardCampaign = ({ data }) => {
     const infoCard = data;
@@ -28,7 +29,7 @@ const CardCampaign = ({ data }) => {
                         textOverflow: "ellipsis",
                     }}
                 >
-                {infoCard.description}
+                    {infoCard.description}
                 </p>
 
                 {/* Barra */}
@@ -85,9 +86,11 @@ const CardCampaign = ({ data }) => {
                     </p>
                     <p class=" text-blue-text">Objetivo: ${infoCard.goal}</p>
                 </div>
-                <button class="  bg-btn-orange h-42 w-110 rounded-full self-end ">
-                    <p className="text-white text-xs font-bold">Leer mas</p>
-                </button>
+                <Link to={`/campaign/${infoCard.id}`}>
+                    <button class="  bg-btn-orange h-42 w-110 rounded-full self-end ">
+                        <p className="text-white text-xs font-bold">Leer mas</p>
+                    </button>
+                </Link>
             </div>
         </div>
     );
