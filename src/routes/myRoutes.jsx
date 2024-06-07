@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingSpinner from "../components/UI/Loading/LoadingSpinner";
 import Layout from "../layout/layout";
 import ScrollToTop from "../components/ScrollToTop/scrollToTop";
-
 /* Routes */
 
 const Home = lazy(() => import("../pages/Home/Home"));
