@@ -1,15 +1,15 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingSpinner from "../components/UI/Loading/LoadingSpinner";
 import Layout from "../layout/layout";
 import ScrollToTop from "../components/ScrollToTop/scrollToTop";
-
 /* Routes */
 
 const Home = lazy(() => import("../pages/Home/Home"));
 const Campaign = lazy(() => import("../pages/Campaign/campaign"));
 const AllCampaigns = lazy(() => import("../pages/AllCampaigns/allCampaigns"));
 const Login = lazy(() => import("../pages/login/Login"));
+const Registro = lazy(() => import("../pages/registro/Registro"));
 const Error = lazy(() => import("../pages/Error/error"));
 
 const MyRoutes = () => {
@@ -24,6 +24,7 @@ const MyRoutes = () => {
                     <Route path="/campaign/:id" element={<Campaign />} />
                     <Route path="/allCampaigns" element={<AllCampaigns />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/registro" element={<Registro />} />
                     
 
                     <Route path="*" element={<Error />} />
