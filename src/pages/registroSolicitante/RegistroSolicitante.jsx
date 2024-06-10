@@ -289,24 +289,14 @@ const RegistroSolicitante = () => {
                     onChange={handleOnChange}
                   />
                 </div>
-                <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                  <input
-                    className={`pl-2 outline-none border-none w-full ${errors.isInstitution? "border-red-500" : ""}`}
-                    type="text"
-                    id="isInstitution"
-                    placeholder="¿Es una institución?"
-                    value={inputs.isInstitution}
-                    onChange={handleOnChange}
-                  />
-                </div>
                 {errors.isInstitution && <div className="text-red-500 text-sm mt-2">{errors.isInstitution}</div>}
-                </form>
-                </div>
-                </div>
-                <div className="flex justify-center items-center mt-6 bg-white">
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
+                <div className="flex justify-center items-center my-4 bg-white">
+                  <button className=" bg-orange-400 text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
                     {status.submitting? "Registrando..." : "Registrarme"}
                   </button>
+                </div>
+                </form>
+                </div>
                 </div>
                 </>
   )
