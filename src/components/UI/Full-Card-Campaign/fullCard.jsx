@@ -44,12 +44,12 @@ const FullCard = ({data}) => {
                  {/* Barra */}
                  <div
                      className="ProgressDonation"
-                     class="grow flex items-center justify-between relative w-11/12 text-center"
+                     className="grow flex items-center justify-between relative w-11/12 text-center"
                  >
                      <div
                          className="ProgressIcon"
                          style={{ left: `${progress}%` }}
-                         class=" absolute w-1 h-1 flex items-center justify-center"
+                         className=" absolute w-1 h-1 flex items-center justify-center"
                      >
                          <div
                              style={
@@ -57,25 +57,25 @@ const FullCard = ({data}) => {
                                      ? { backgroundColor: "#FFB905" }
                                      : { backgroundColor: "#2EBF7E" }
                              }
-                             class="w-11 h-11 absolute rounded-full flex items-center justify-center"
+                             className="w-11 h-11 absolute rounded-full flex items-center justify-center"
                          >
                              <img
-                                 class="object-contain"
+                                 className="object-contain"
                                  src={Heart}
                                  alt="Heart"
                              />
                          </div>
                      </div>
  
-                     <div class="flex w-full h-4 bg-gray-200 rounded-full overflow-hidden border-solid border-2">
+                     <div className="flex w-full h-4 bg-gray-200 rounded-full overflow-hidden border-solid border-2">
                          <div
-                             class="flex flex-col justify-center overflow-hidden bg-orange-bar whitespace-nowrap "
+                             className="flex flex-col justify-center overflow-hidden bg-orange-bar whitespace-nowrap "
                              style={{ width: `${progress}%`, maxWidth: "60%" }}
                              role="progressbar"
                          ></div>
                          {progress > 60 ? (
                              <div
-                                 class="flex flex-col justify-center overflow-hidde bg-green-bar whitespace-nowrap "
+                                 className="flex flex-col justify-center overflow-hidde bg-green-bar whitespace-nowrap "
                                  style={{ width: `${progress - 60}%` }}
                                  role="progressbar"
                                  aria-valuenow="10"
@@ -88,12 +88,12 @@ const FullCard = ({data}) => {
  
                  <div
                      className="ValueDonation"
-                     class="w-full flex items-center justify-between py-3"
+                     className="w-full flex items-center justify-between py-3"
                  >
-                     <p class="text-2xl text-blue-title font-bold">
+                     <p className="text-2xl text-blue-title font-bold">
                          ${infoCard.acumulate}
                      </p>
-                     <p class=" text-blue-text">Objetivo: ${infoCard.goal}</p>
+                     <p className=" text-blue-text">Objetivo: ${infoCard.goal}</p>
                  </div>
                  <h1 className='mt-12 mb-4'>¡Hacé tu donación!</h1>
                  <div className="flex flex-row items-center justify-between">
@@ -110,7 +110,7 @@ const FullCard = ({data}) => {
                     <button className='w-92 h-45 bg-blue-text rounded-lg text-white' onClick={()=>setAmount(5000)}>{currency} 5000</button>
                  </div>
 
-                 <button class="bg-btn-orange h-42 w-110 rounded-full my-6 self-center "  onClick={handleDonation}>
+                 <button className="bg-btn-orange h-42 w-110 rounded-full my-6 self-center "  onClick={handleDonation}>
                      <p className="text-white text-xs font-bold">Doná ahora</p>
                  </button>
                  <p className='px-9 text-xs font-bold text-center' >*Te redireccionaremos a tu cuenta de Mercado Pago</p>

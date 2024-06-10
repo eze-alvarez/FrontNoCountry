@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingSpinner from "../components/UI/Loading/LoadingSpinner";
-import Layout from "../layout/layout";
+import Layout from "../layout/Layout";
 import ScrollToTop from "../components/ScrollToTop/scrollToTop";
 /* Routes */
 
