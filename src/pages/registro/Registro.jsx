@@ -212,11 +212,17 @@ const Register = () => {
                 onChange={handleOnChange}
               />
             </div>
+
             <Link to="/login" className="text-blue-500 ml-2">
               ¿Ya tienes una cuenta?
             </Link>
-
             <div className="text-red-500 text-sm mt-2">{errors.password}</div>
+            <div className="flex justify-center items-center mt-6 bg-white">
+            
+                  <button className=" bg-orange-400 text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
+                    {status.submitting? "Registrando..." : "Registrarme"}
+                  </button>
+                </div>
           </form>
         </div>
       </div>
