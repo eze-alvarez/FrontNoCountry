@@ -128,11 +128,12 @@ const Register = () => {
     ) {
       axios({
         method: "POST",
-        url: "/api/register",
+        url: "https://back-no-country-c18-03-m-node.fly.dev/api/v1/usera/register",
         data: inputs,
       })
         .then((response) => {
           handleServerResponse(true, "Usuario registrado exitosamente");
+          console.log(response);
         })
         .catch((error) => {
           handleServerResponse(false, error.response.data.error);
@@ -162,7 +163,7 @@ const Register = () => {
               <input
                 className={`pl-2 outline-none border-none w-full ${errors.firstName ? "border-red-500" : ""}`}
                 type="text"
-                id="firstName"
+                id="name"
                 placeholder="Nombre"
                 value={inputs.firstName}
                 onChange={handleOnChange}
@@ -173,7 +174,7 @@ const Register = () => {
               <input
                 className={`pl-2 outline-none border-none w-full ${errors.lastName ? "border-red-500" : ""}`}
                 type="text"
-                id="lastName"
+                id="surname"
                 placeholder="Apellido"
                 value={inputs.lastName}
                 onChange={handleOnChange}
@@ -193,30 +194,25 @@ const Register = () => {
             {errors.email && <div className="text-red-500 text-sm mt-2">{errors.email}</div>}
             <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
               <input
-                className={`pl-2 outline-none border-none w-full ${errors.phone ? "border-red-500" : ""}`}
-                type="tel"
-                id="phone"
-                placeholder="Teléfono"
-                value={inputs.phone}
-                onChange={handleOnChange}
-              />
-            </div>
-            {errors.phone && <div className="text-red-500 text-sm mt-2">{errors.phone}</div>}
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-              <input
                 className={`pl-2 outline-none border-none w-full ${errors.password ? "border-red-500" : ""}`}
                 type="password"
                 id="password"
-                placeholder="Contraseña"
+                placeholder="Password"
                 value={inputs.password}
                 onChange={handleOnChange}
               />
             </div>
+
             <Link to="/login" className="text-blue-500 ml-2">
               ¿Ya tienes una cuenta?
             </Link>
-
             <div className="text-red-500 text-sm mt-2">{errors.password}</div>
+            <div className="flex justify-center items-center mt-6 bg-white">
+            
+                  <button className=" bg-orange-400 text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
+                    {status.submitting? "Registrando..." : "Registrarme"}
+                  </button>
+                </div>
           </form>
         </div>
       </div>

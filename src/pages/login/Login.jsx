@@ -92,11 +92,12 @@ const Login = () => {
     if (isEmailValid && isPasswordValid) {
       axios({
         method: "POST",
-        url: "/api/login",
+        url: "https://back-no-country-c18-03-m-node.fly.dev/api/v1/users/login",
         data: inputs,
       })
         .then((response) => {
           handleServerResponse(true, "Bienvenido");
+          console.log(response);
         })
         .catch((error) => {
           handleServerResponse(false, error.response.data.error);
@@ -135,16 +136,16 @@ const Login = () => {
                 className={`pl-2 outline-none border-none w-full ${errors.password ? "border-red-500" : ""}`}
                 type="password"
                 id="password"
-                placeholder="Contraseña"
+                placeholder="Password"
                 value={inputs.password}
                 onChange={handleOnChange}
               />
             </div>
             {errors.password && <div className="text-red-500 text-sm mt-2">{errors.password}</div>}
             <div className="flex">
-              <Link to="#">
+              {/* <Link to="#">
                 <p className="pl-6 py-4 text-blue text-sm">¿Olvidaste tu contraseña?</p>
-              </Link>
+              </Link> */}
               <Link to="/registro">
                 <p className="py-4 text-blue text-sm">¿No tienes cuenta? Crea una</p>
               </Link>

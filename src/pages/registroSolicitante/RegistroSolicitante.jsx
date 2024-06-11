@@ -12,25 +12,21 @@ const RegistroSolicitante = () => {
 
   const [inputs, setInputs] = useState({
     name: "",
-    lastName: "",
-    location: "",
-    phone: "",
+    surname: "",
     email: "",
-    cbu: "",
+    bankInformation: "",
     password: "",
-    institutionName: "",
+    entityName: "",
     isInstitution: false,
   });
 
   const [errors, setErrors] = useState({
     name: null,
-    lastName: null,
-    location: null,
-    phone: null,
+    username: null,
     email: null,
-    cbu: null,
+    bankInformation: null,
     password: null,
-    institutionName: null,
+    entityName: null,
   });
 
   const validateEmail = (email) => {
@@ -42,14 +38,10 @@ const RegistroSolicitante = () => {
     return password.trim().length >= 8;
   };
 
-  const validatePhone = (phone) => {
-    const phoneRegex = /^\d{10}$/;
-    return phoneRegex.test(phone);
-  };
 
-  const validateCBU = (cbu) => {
-    // Agrega la validación de CBU aquí
-    return cbu.trim().length === 22;
+  const validatebankInformation = (bankInformation) => {
+    // Agrega la validación de bankInformation aquí
+    return bankInformation.trim().length === 22;
   };
 
   const handleServerResponse = (ok, msg) => {
@@ -61,24 +53,20 @@ const RegistroSolicitante = () => {
       });
       setInputs({
         name: "",
-        lastName: "",
-        location: "",
-        phone: "",
+        surname: "",
         email: "",
-        cbu: "",
+        bankInformation: "",
         password: "",
-        institutionName: "",
+        entityName: "",
         isInstitution: false,
       });
       setErrors({
         name: null,
-        lastName: null,
-        location: null,
-        phone: null,
+        surname: null,
         email: null,
-        cbu: null,
+        bankInformation: null,
         password: null,
-        institutionName: null,
+        entityName: null,
       });
       history.push("/login");
     } else {
@@ -116,16 +104,10 @@ const RegistroSolicitante = () => {
             : null,
         }));
         break;
-      case "phone":
+      case "bankInformation":
         setErrors((prev) => ({
           ...prev,
-          phone: !validatePhone(value) ? "Ingresa un número de teléfono válido" : null,
-        }));
-        break;
-      case "cbu":
-        setErrors((prev) => ({
-          ...prev,
-          cbu: !validateCBU(value) ? "Ingresa un CBU válido" : null,
+          bankInformation: !validatebankInformation(value) ? "Ingresa un bankInformation válido" : null,
         }));
         break;
       default:
@@ -140,26 +122,24 @@ const RegistroSolicitante = () => {
     // Validar todos los campos antes de enviar el formulario
     const isEmailValid = validateEmail(inputs.email);
     const isPasswordValid = validatePassword(inputs.password);
-    const isPhoneValid = validatePhone(inputs.phone);
-    const isCBUValid = validateCBU(inputs.cbu);
+    const isbankInformationValid = validatebankInformation(inputs.bankInformation);
 
     if (
       inputs.name.trim().length > 0 &&
-      inputs.lastName.trim().length > 0 &&
-      inputs.location.trim().length > 0 &&
+      inputs.surname.trim().length > 0 &&
       isEmailValid &&
       isPasswordValid &&
-      isPhoneValid &&
-      isCBUValid &&
-      (inputs.isInstitution ? inputs.institutionName.trim().length > 0 : true)
+      isbankInformationValid &&
+      (inputs.isInstitution ? inputs.entityName.trim().length > 0 : true)
     ) {
       axios({
         method: "POST",
-        url: "/api/register",
+        url: "https://back-no-country-c18-03-m-node.fly.dev/api/v1/users/registerSolicit",
         data: inputs,
       })
         .then((response) => {
           handleServerResponse(true, "Usuario registrado exitosamente");
+          console.log(response);
         })
         .catch((error) => {
           handleServerResponse(false, error.response.data.error);
@@ -167,14 +147,12 @@ const RegistroSolicitante = () => {
     } else {
       setErrors({
         name: inputs.name.trim().length === 0 ? "El nombre no puede estar vacío" : null,
-        lastName: inputs.lastName.trim().length === 0 ? "El apellido no puede estar vacío" : null,
-        location: inputs.location.trim().length === 0 ? "La localidad no puede estar vacía" : null,
+        surname: inputs.surname.trim().length === 0 ? "El apellido no puede estar vacío" : null,
         email: !isEmailValid ? "Ingresa un email válido" : null,
-        phone: !isPhoneValid ? "Ingresa un número de teléfono válido" : null,
-        cbu: !isCBUValid ? "Ingresa un CBU válido" : null,
+        bankInformation: !isbankInformationValid ? "Ingresa un bankInformation válido" : null,
         password: !isPasswordValid ? "La contraseña debe tener al menos 8 caracteres" : null,
-        institutionName:
-          inputs.isInstitution && inputs.institutionName.trim().length === 0
+        entityName:
+          inputs.isInstitution && inputs.entityName.trim().length === 0
             ? "El nombre de la institución no puede estar vacío"
             : null,
       });
@@ -204,37 +182,15 @@ const RegistroSolicitante = () => {
             {errors.name && <div className="text-red-500 text-sm mt-2">{errors.name}</div>}
             <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
               <input
-                className={`pl-2 outline-none border-none w-full ${errors.lastName ? "border-red-500" : ""}`}
+                className={`pl-2 outline-none border-none w-full ${errors.surname ? "border-red-500" : ""}`}
                 type="text"
-                id="lastName"
+                id="surname"
                 placeholder="Apellido"
-                value={inputs.lastName}
+                value={inputs.surname}
                 onChange={handleOnChange}
               />
             </div>
-            {errors.lastName && <div className="text-red-500 text-sm mt-2">{errors.lastName}</div>}
-            <div className="flex items-center border-2 py-2 px-3 rounde-2xl mb-4">
-              <input
-                className={`pl-2 outline-none border-none w-full ${errors.location? "border-red-500" : ""}`}
-                type="text"
-                id="location"
-                placeholder="Localidad"
-                value={inputs.location}
-                onChange={handleOnChange}
-                />
-                </div>
-                {errors.location && <div className="text-red-500 text-sm mt-2">{errors.location}</div>}
-                <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                  <input
-                    className={`pl-2 outline-none border-none w-full ${errors.phone? "border-red-500" : ""}`}
-                    type="text"
-                    id="phone"
-                    placeholder="Teléfono"
-                    value={inputs.phone}
-                    onChange={handleOnChange}
-                  />
-                </div>
-                {errors.phone && <div className="text-red-500 text-sm mt-2">{errors.phone}</div>}
+            {errors.surname && <div className="text-red-500 text-sm mt-2">{errors.surname}</div>}
                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                   <input
                     className={`pl-2 outline-none border-none w-full ${errors.email? "border-red-500" : ""}`}
@@ -259,26 +215,26 @@ const RegistroSolicitante = () => {
                 {errors.password && <div className="text-red-500 text-sm mt-2">{errors.password}</div>}
                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                   <input
-                    className={`pl-2 outline-none border-none w-full ${errors.cbu? "border-red-500" : ""}`}
+                    className={`pl-2 outline-none border-none w-full ${errors.bankInformation? "border-red-500" : ""}`}
                     type="text"
-                    id="cbu"
-                    placeholder="CBU"
-                    value={inputs.cbu}
+                    id="bankInformation"
+                    placeholder="bankInformation"
+                    value={inputs.bankInformation}
                     onChange={handleOnChange}
                   />
                 </div>
-                {errors.cbu && <div className="text-red-500 text-sm mt-2">{errors.cbu}</div>}
+                {errors.bankInformation && <div className="text-red-500 text-sm mt-2">{errors.bankInformation}</div>}
                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                   <input
-                    className={`pl-2 outline-none border-none w-full ${errors.institutionName? "border-red-500" : ""}`}
+                    className={`pl-2 outline-none border-none w-full ${errors.entityName? "border-red-500" : ""}`}
                     type="text"
-                    id="institutionName"
+                    id="entityName"
                     placeholder="Nombre de la institución"
-                    value={inputs.institutionName}
+                    value={inputs.entityName}
                     onChange={handleOnChange}
                   />
                 </div>
-                {errors.institutionName && <div className="text-red-500 text-sm mt-2">{errors.institutionName}</div>}
+                {errors.entityName && <div className="text-red-500 text-sm mt-2">{errors.entityName}</div>}
                 <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
                   <input
                     className={`pl-2 outline-none border-none w-full ${errors.isInstitution? "border-red-500" : ""}`}
@@ -289,24 +245,14 @@ const RegistroSolicitante = () => {
                     onChange={handleOnChange}
                   />
                 </div>
-                <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                  <input
-                    className={`pl-2 outline-none border-none w-full ${errors.isInstitution? "border-red-500" : ""}`}
-                    type="text"
-                    id="isInstitution"
-                    placeholder="¿Es una institución?"
-                    value={inputs.isInstitution}
-                    onChange={handleOnChange}
-                  />
-                </div>
                 {errors.isInstitution && <div className="text-red-500 text-sm mt-2">{errors.isInstitution}</div>}
-                </form>
-                </div>
-                </div>
-                <div className="flex justify-center items-center mt-6 bg-white">
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
+                <div className="flex justify-center items-center my-4 bg-white">
+                  <button className=" bg-orange-400 text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
                     {status.submitting? "Registrando..." : "Registrarme"}
                   </button>
+                </div>
+                </form>
+                </div>
                 </div>
                 </>
   )
