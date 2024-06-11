@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import logoblanco from '../../assets/Images/commonImg/logoblanco.png';
 
 const Login = () => {
 
@@ -113,58 +114,65 @@ const Login = () => {
 
   return (
     <>
-      <div className="h-screen md:flex mt-16">
-        <div className="bg-orange-400 h-36">
-          <h1 className="text-white">Hola</h1>
-        </div>
-        <div className="flex justify-center items-center bg-white">
-          <form onSubmit={handleOnSubmit} className="bg-white w-80">
-            <h1 className="text-blue font-bold text-2xl text-left py-4">Bienvenido</h1>
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-              <input
-                className={`pl-2 outline-none border-none w-full ${errors.email ? "border-red-500" : ""}`}
-                type="email"
-                id="email"
-                placeholder="Email"
-                value={inputs.email}
-                onChange={handleOnChange}
-              />
+      <div className="h-screen sm:flex sm:flex-col mt-14 ">
+        <div className=" lg:flex justify-center items-center my-14 ">
+
+          <div className="bg-orange-400 h-36 lg:h-[36rem] lg:w-[45rem] content-center">
+
+            <div className="mt-14">
+              <h1 className="text-white  ">Iniciá tu sesión</h1>
+              <img src={logoblanco} alt="logo" className=" h-[3rem] w-[12rem] lg:ml-[16rem] mt-[8rem]" />
             </div>
-            {errors.email && <div className="text-red-500 text-sm mt-2">{errors.email}</div>}
-            <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
-              <input
-                className={`pl-2 outline-none border-none w-full ${errors.password ? "border-red-500" : ""}`}
-                type="password"
-                id="password"
-                placeholder="Password"
-                value={inputs.password}
-                onChange={handleOnChange}
-              />
-            </div>
-            {errors.password && <div className="text-red-500 text-sm mt-2">{errors.password}</div>}
-            <div className="flex">
-              {/* <Link to="#">
+          </div>
+          <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
+            <form onSubmit={handleOnSubmit} className="bg-white w-80">
+              <h1 className="text-blue font-bold text-2xl text-left py-4">Bienvenido</h1>
+              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+                <input
+                  className={`pl-2 outline-none border-none w-full ${errors.email ? "border-red-500" : ""}`}
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                  value={inputs.email}
+                  onChange={handleOnChange}
+                />
+              </div>
+              {errors.email && <div className="text-red-500 text-sm mt-2">{errors.email}</div>}
+              <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
+                <input
+                  className={`pl-2 outline-none border-none w-full ${errors.password ? "border-red-500" : ""}`}
+                  type="password"
+                  id="password"
+                  placeholder="Password"
+                  value={inputs.password}
+                  onChange={handleOnChange}
+                />
+              </div>
+              {errors.password && <div className="text-red-500 text-sm mt-2">{errors.password}</div>}
+              <div className="flex">
+                {/* <Link to="#">
                 <p className="pl-6 py-4 text-blue text-sm">¿Olvidaste tu contraseña?</p>
               </Link> */}
-              <Link to="/registro">
-                <p className="py-4 text-blue text-sm">¿No tienes cuenta? Crea una</p>
-              </Link>
-            </div>
-            <div className="mt-4 pl-20">
-              <button
-                type="submit"
-                className="block w-40 bg-orange-400 h-42 rounded-full text-white rou font-semibold text-sm"
-                disabled={status.submitting}
-              >
-                {status.submitting ? "Enviando..." : "Iniciar sesión"}
-              </button>
-            </div>
-            <div className="pl-20 mt-4">
-              <Link to="/RegistroSolicitante">
-                <p className="py-4 font-semibold text-blue-700">Solicitar Donación</p>
-              </Link>
-            </div>
-          </form>
+                <Link to="/registro">
+                  <p className="py-4 text-blue text-sm">¿No tienes cuenta? Crea una</p>
+                </Link>
+              </div>
+              <div className="mt-4 pl-20">
+                <button
+                  type="submit"
+                  className="block w-40 bg-orange-400 h-42 rounded-full text-white rou font-semibold text-sm"
+                  disabled={status.submitting}
+                >
+                  {status.submitting ? "Enviando..." : "Iniciar sesión"}
+                </button>
+              </div>
+              <div className="pl-20 mt-4">
+                <Link to="/RegistroSolicitante">
+                  <p className="py-4 font-semibold text-blue-700">Solicitar Donación</p>
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </>
