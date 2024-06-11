@@ -23,7 +23,7 @@ const FullCard = ({ data }) => {
     };
 
     return (
-        <div className=" w-344 h-888 bg-main-white rounded-2xl m-auto flex flex-col md:w-full md:h-750">
+        <div className=" w-344 h-888 bg-main-white rounded-2xl m-auto flex flex-col md:w-full md:max-w-900 md:h-750 mt-16">
             <div className="w-full h-201 md:h-300">
                 <img
                     src={infoCard.img}
@@ -92,7 +92,7 @@ const FullCard = ({ data }) => {
                         </p>
                     </div>
                 </div>
-                <div className="max-w-344 flex flex-col ">
+                <div className="max-w-344 flex flex-col md:h-full justify-start">
                     <h1 className=" mb-2">¡Hacé tu donación!</h1>
                     <div className="flex flex-row items-center justify-between mt-4">
                         <select
@@ -113,7 +113,7 @@ const FullCard = ({ data }) => {
                             placeholder="500"
                         />
                     </div>
-                    <div className="flex flex-row items-center justify-between mt-4">
+                    <div className="flex flex-row items-center justify-between mt-6">
                         <button
                             className="w-92 h-45 bg-blue-text rounded-lg text-white"
                             onClick={() => setAmount(1000)}
@@ -135,14 +135,14 @@ const FullCard = ({ data }) => {
                     </div>
 
                     <button
-                        className="bg-btn-orange h-42 w-110 rounded-full my-6 self-center "
+                        className="bg-btn-orange h-42 w-110 rounded-full my-6 self-center md:mt-12 "
                         onClick={handleDonation}
                     >
                         <p className="text-white text-xs font-bold">
                             Doná ahora
                         </p>
                     </button>
-                    <p className="px-9 text-xs font-bold text-center">
+                    <p className="px-9 text-xs font-bold text-center self-baseline mt-auto">
                         *Te redireccionaremos a tu cuenta de Mercado Pago
                     </p>
                 </div>
