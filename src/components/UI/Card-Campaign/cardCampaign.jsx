@@ -17,7 +17,7 @@ const CardCampaign = ({ data }) => {
                 />
             </div>
             <div className="flex flex-col h-full justify-between px-5 pb-6 pt-9">
-                <h1 class=" mb-2">{infoCard.title}</h1>
+                <h1 className=" mb-2">{infoCard.title}</h1>
 
                 <p
                     className=" text-blue-text mb-2"
@@ -35,12 +35,12 @@ const CardCampaign = ({ data }) => {
                 {/* Barra */}
                 <div
                     className="ProgressDonation"
-                    class="grow flex items-center justify-between relative w-11/12 text-center"
+                    className="grow flex items-center justify-between relative w-11/12 text-center"
                 >
                     <div
                         className="ProgressIcon"
                         style={{ left: `${progress}%` }}
-                        class=" absolute w-1 h-1 flex items-center justify-center"
+                        className=" absolute w-1 h-1 flex items-center justify-center"
                     >
                         <div
                             style={
@@ -48,25 +48,25 @@ const CardCampaign = ({ data }) => {
                                     ? { backgroundColor: "#FFB905" }
                                     : { backgroundColor: "#2EBF7E" }
                             }
-                            class="w-11 h-11 absolute rounded-full flex items-center justify-center"
+                            className="w-11 h-11 absolute rounded-full flex items-center justify-center"
                         >
                             <img
-                                class="object-contain"
+                                className="object-contain"
                                 src={Heart}
                                 alt="Heart"
                             />
                         </div>
                     </div>
 
-                    <div class="flex w-full h-4 bg-gray-200 rounded-full overflow-hidden border-solid border-2">
+                    <div className="flex w-full h-4 bg-gray-200 rounded-full overflow-hidden border-solid border-2">
                         <div
-                            class="flex flex-col justify-center overflow-hidden bg-orange-bar whitespace-nowrap "
+                            className="flex flex-col justify-center overflow-hidden bg-orange-bar whitespace-nowrap "
                             style={{ width: `${progress}%`, maxWidth: "60%" }}
                             role="progressbar"
                         ></div>
                         {progress > 60 ? (
                             <div
-                                class="flex flex-col justify-center overflow-hidde bg-green-bar whitespace-nowrap "
+                                className="flex flex-col justify-center overflow-hidde bg-green-bar whitespace-nowrap "
                                 style={{ width: `${progress - 60}%` }}
                                 role="progressbar"
                                 aria-valuenow="10"
@@ -79,15 +79,15 @@ const CardCampaign = ({ data }) => {
 
                 <div
                     className="ValueDonation"
-                    class="w-full flex items-center justify-between py-3"
+                    className="w-full flex items-center justify-between py-3"
                 >
-                    <p class="text-2xl text-blue-title font-bold">
+                    <p className="text-2xl text-blue-title font-bold">
                         ${infoCard.acumulate}
                     </p>
-                    <p class=" text-blue-text">Objetivo: ${infoCard.goal}</p>
+                    <p className=" text-blue-text">Objetivo: ${infoCard.goal}</p>
                 </div>
                 <Link to={`/campaign/${infoCard.id}`}>
-                    <button class="  bg-btn-orange h-42 w-110 rounded-full self-end ">
+                    <button className="  bg-btn-orange h-42 w-110 rounded-full self-end ">
                         <p className="text-white text-xs font-bold">Leer mas</p>
                     </button>
                 </Link>
