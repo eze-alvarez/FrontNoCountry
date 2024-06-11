@@ -1,7 +1,9 @@
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerEntiti } from "../../redux/actions/actions";
+
 
 const RegistroSolicitante = () => {
   const dispatch = useDispatch();
@@ -129,5 +131,6 @@ const RegistroSolicitante = () => {
     </>
   );
 };
+
 
 export default RegistroSolicitante;

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/actions/actions";
+import logoblanco from '../../assets/Images/commonImg/logoblanco.png';
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
