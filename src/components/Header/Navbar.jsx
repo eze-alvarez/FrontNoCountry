@@ -24,12 +24,12 @@ export default function Navbar() {
 
         {/* Logo */} 
         <NavLink to="/" className="cursor-pointer font-bold">
-          <img src={logoNavBlue} alt="mano" className="h-[22px] w-[95px]  lg:h-[37px] lg:w-[158.35px] cursor-pointer" />
+          <img src={logoNavBlue} alt="mano" className="h-[22px]  md:h-[37px] md:w-auto cursor-pointer" />
         </NavLink>
 
         {/* Desktop Menu */}
-        <div className="hidden font-medium tracking-wider landscape:flex sm:flex">
-          <ul className="flex sm:gap-3 md:gap-5 xl:gap-x-20  text-xs xl:text-base ">
+        <div className="hidden font-medium tracking-wider landscape:flex sm:flex sm:gap-4 md:gap-14 xl:gap-36">
+          <ul className="flex items-center sm:gap-3 md:gap-5 xl:gap-x-20  text-xs xl:text-base ">
             
             <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
               <li className=" hover:scale-[1.1]">¿Quiénes somos?</li>
@@ -41,12 +41,13 @@ export default function Navbar() {
               <li className=" hover:scale-[1.1]">Contactanos</li>
             </NavLink>
           </ul>
-        </div>
-        <NavLink to="/login">
+          <NavLink to="/login">
           <button className="  bg-white  rounded-full   px-3 xl:px-4 py-2   hidden sm:grid sm:place-content-center tracking-wider">
                 <p className="text-blue-title text-xs xl:text-base font-medium">Iniciar sesión</p>
           </button>
-        </NavLink>
+          </NavLink>
+        </div>
+        
 
         {/* Mobile Menu Toggle */}
         <div onClick={handleNav} className="sm:hidden cursor-pointer">
@@ -54,6 +55,8 @@ export default function Navbar() {
             <FaBars size={15} className='text-blue-title'/>
           </div>
         </div>
+
+        
       </div>
 
 
