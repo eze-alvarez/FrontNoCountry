@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logoNavBlue from '../../assets/Images/headerImg/logo azul.png';
 import {FaWindowClose, FaBars } from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
@@ -13,8 +13,8 @@ export default function Navbar() {
     setMenuOpen(!menuOpen);
   }
   return (
-    <nav className="fixed w-full h-14   z-30 top-0 text-blue-title bg-nav">
-      <div className="container mx-auto xl:max-w-5xl 2xl:max-w-7xl flex justify-between items-center h-full w-full px-8">
+    <nav className="fixed w-full h-14 lg:h-[68px]  z-30 top-0 text-blue-title bg-nav  ">
+      <div className=" mx-auto  2xl:max-w-[1400px] flex justify-between items-center h-full w-full px-8 xl:px-20">
 
 
         {/* Logo */}
@@ -22,28 +22,31 @@ export default function Navbar() {
           <VscAccount size={25}/>
         </NavLink>
 
-        {/* Logo */}
+        {/* Logo */} 
         <NavLink to="/" className="cursor-pointer font-bold">
-          <img src={logoNavBlue} alt="mano" className="h-[22px] w-[95px]  cursor-pointer" />
+          <img src={logoNavBlue} alt="mano" className="h-[22px] w-[95px]  lg:h-[37px] lg:w-[158.35px] cursor-pointer" />
         </NavLink>
 
         {/* Desktop Menu */}
-        <div className="hidden font-semibold tracking-wider landscape:flex sm:flex">
-          <ul className="flex gap-x-3 text-sm xl:text-xl xl:gap-x-5">
-            <NavLink to="/" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">Home</li>
+        <div className="hidden font-medium tracking-wider landscape:flex sm:flex">
+          <ul className="flex sm:gap-3 md:gap-5 xl:gap-x-20  text-xs xl:text-base ">
+            
+            <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+              <li className=" hover:scale-[1.1]">¿Quiénes somos?</li>
             </NavLink>
-            <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">¿Quiénes somos?</li>
+            <NavLink to="/campañas" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+              <li className=" hover:scale-[1.1]">Campañas</li>
             </NavLink>
-            <NavLink to="/campañas" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">Campañas</li>
-            </NavLink>
-            <NavLink to="/contactanos" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">Contactanos</li>
+            <NavLink to="/contactanos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+              <li className=" hover:scale-[1.1]">Contactanos</li>
             </NavLink>
           </ul>
         </div>
+        <NavLink to="/login">
+          <button className="  bg-white  rounded-full   px-3 xl:px-4 py-2   hidden sm:grid sm:place-content-center tracking-wider">
+                <p className="text-blue-title text-xs xl:text-base font-medium">Iniciar sesión</p>
+          </button>
+        </NavLink>
 
         {/* Mobile Menu Toggle */}
         <div onClick={handleNav} className="sm:hidden cursor-pointer">
