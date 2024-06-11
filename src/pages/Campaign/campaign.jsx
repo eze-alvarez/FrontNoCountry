@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useParams } from 'react-router-dom'
 import { CardsInfo } from '../../constants/cardsInfo'
 import FullCard from '../../components/UI/Full-Card-Campaign/fullCard'

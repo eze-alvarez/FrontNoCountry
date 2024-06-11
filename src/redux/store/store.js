@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import campaignReducer from "../reducers/campaignSlice";
+import rootReducer from "../reducers/campaignSlice";
 
 const store = configureStore({
   reducer: {
-    campaignInfo: campaignReducer,
-  }
+    campaignInfo: rootReducer,
+  },
 });
 
 export default store;
