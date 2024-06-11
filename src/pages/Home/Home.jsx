@@ -4,7 +4,7 @@ import CardHero from "../../components/UI/Card-Hero/CardHero";
 
 export default function Home() {
   return (
-    <div className="w-full px-4 pt-1">
+    <div className="w-full pt-1">
       <CardHero />
       <HowToDonate />
       <SectionCampaigns />

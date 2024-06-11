@@ -8,7 +8,7 @@ const CardCampaign = ({ data }) => {
     const infoCard = data;
     const progress = (infoCard.acumulate * 100) / infoCard.goal;
     return (
-        <div className=" max-w-370 h-522 bg-main-white rounded-2xl m-auto flex flex-col">
+        <div className=" max-w-346 h-522 bg-main-white rounded-2xl m-auto flex flex-col">
             <div className="w-full h-201">
                 <img
                     src={infoCard.img}
@@ -33,12 +33,8 @@ const CardCampaign = ({ data }) => {
                 </p>
 
                 {/* Barra */}
-                <div
-                    className="ProgressDonation"
-                    className="grow flex items-center justify-between relative w-11/12 text-center"
-                >
+                <div className="grow flex items-center justify-between relative w-11/12 text-center">
                     <div
-                        className="ProgressIcon"
                         style={{ left: `${progress}%` }}
                         className=" absolute w-1 h-1 flex items-center justify-center"
                     >
@@ -77,14 +73,13 @@ const CardCampaign = ({ data }) => {
                     </div>
                 </div>
 
-                <div
-                    className="ValueDonation"
-                    className="w-full flex items-center justify-between py-3"
-                >
+                <div className="w-full flex items-center justify-between py-3">
                     <p className="text-2xl text-blue-title font-bold">
                         ${infoCard.acumulate}
                     </p>
-                    <p className=" text-blue-text">Objetivo: ${infoCard.goal}</p>
+                    <p className=" text-blue-text">
+                        Objetivo: ${infoCard.goal}
+                    </p>
                 </div>
                 <Link to={`/campaign/${infoCard.id}`}>
                     <button className="  bg-btn-orange h-42 w-110 rounded-full self-end ">
