@@ -11,7 +11,7 @@ const AllCampaigns = lazy(() => import("../pages/AllCampaigns/allCampaigns"));
 const Login = lazy(() => import("../pages/login/Login"));
 const Registro = lazy(() => import("../pages/registro/Registro"));
 const RegistroSolicitante = lazy(() => import("../pages/registroSolicitante/RegistroSolicitante"));
-const Error = lazy(() => import("../pages/Error/error"));
+const Error = lazy(() => import("../pages/Error/NotFound/error"));
 
 const MyRoutes = () => {
   return (
