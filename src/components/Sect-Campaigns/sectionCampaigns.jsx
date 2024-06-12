@@ -7,24 +7,25 @@ import { Link } from "react-router-dom";
 
 const SectionCampaigns = () => {
     return (
-        <div className="flex flex-col mb-11 mt-9">
-            <h1 className="mb-4">Campañas</h1>
+        <div className="flex flex-col mt-9 md:mt-20 ">
+            <h1 className="mb-4 md:mb-14">Campañas</h1>
             <Carousel>
                 {CardsInfo.map((card, index) => (
                     <CardCampaign key={index} data={card} />
                 ))}
             </Carousel>
             <Link to="/allCampaigns">
-                <p className="text-2xl text-center text-blue-title font-bold mt-9 mb-11">
-                    Ver Todas las Campañas
-                </p>
+                <u className=" text-blue-title" >
+                    <p className="text-2xl text-center text-blue-title font-bold mt-12 mb-11 md:mt-20 md:mb-20">
+                        Ver Todas las Campañas
+                    </p>
+                </u>
             </Link>
         </div>
     );
 };
 
 export default SectionCampaigns;
-
 
 /* ~~~~~~~~~~~~~~~~~ Nuevos Cambios NO BORRAR ~~~~~~~~~~~~~~~~~ */
 
@@ -80,5 +81,3 @@ const SectionCampaigns = () => {
 
 export default SectionCampaigns;
  */
-
-
