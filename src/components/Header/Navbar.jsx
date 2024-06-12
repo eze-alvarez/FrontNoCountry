@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import logoNavBlue from '../../assets/Images/headerImg/logo azul.png';
 import {FaWindowClose, FaBars } from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
@@ -34,7 +34,7 @@ export default function Navbar() {
             <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
               <li className=" hover:scale-[1.1]">¿Quiénes somos?</li>
             </NavLink>
-            <NavLink to="/campañas" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+            <NavLink to="/allCampaigns" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
               <li className=" hover:scale-[1.1]">Campañas</li>
             </NavLink>
             <NavLink to="/contactanos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>

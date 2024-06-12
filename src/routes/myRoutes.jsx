@@ -35,7 +35,7 @@ const MyRoutes = () => {
         </Layout>
       </Suspense>
     </Router>
-  );
-};
+  )
+}
 
 export default MyRoutes;
