@@ -166,29 +166,35 @@ const Register = () => {
           <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
             <form onSubmit={handleOnSubmit} className="bg-white w-80">
               <h1 className="text-blue-titel font-bold text-2xl text-left py-4">Ingresá tus datos</h1>
-              <div className="flex gap-2">
-                <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl mb-4  border-blue-text">
-                  <input
-                    className={`pl-2 outline-none border-none w-full ${errors.firstName ? "border-red-500" : ""}`}
-                    type="text"
-                    id="name"
-                    placeholder="Nombre"
-                    value={inputs.firstName}
-                    onChange={handleOnChange}
-                  />
-                </div>
-                {errors.firstName && <div className="text-red-500 text-sm mt-2">{errors.firstName}</div>}
-                <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl mb-4  border-blue-text">
-                  <input
-                    className={`pl-2 outline-none border-none w-full ${errors.lastName ? "border-red-500" : ""}`}
-                    type="text"
-                    id="surname"
-                    placeholder="Apellido"
-                    value={inputs.lastName}
-                    onChange={handleOnChange}
-                  />
-                </div>
-                {errors.lastName && <div className="text-red-500 text-sm mt-2">{errors.lastName}</div>}
+
+              <div className="flex gap-2  ">
+                <section className="flex flex-col">
+                  <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl mb-4  border-blue-text">
+                    <input
+                      className={`pl-2 outline-none border-none w-full ${errors.firstName ? "border-red-500" : ""}`}
+                      type="text"
+                      id="name"
+                      placeholder="Nombre"
+                      value={inputs.firstName}
+                      onChange={handleOnChange}
+                    />
+                  </div>
+                  {errors.firstName && <div className="text-red-500  text-sm mt-2">{errors.firstName}</div>}
+                </section>
+                
+                <section className="flex flex-col">
+                  <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl mb-4  border-blue-text">
+                    <input
+                      className={`pl-2 outline-none border-none w-full ${errors.lastName ? "border-red-500" : ""}`}
+                      type="text"
+                      id="surname"
+                      placeholder="Apellido"
+                      value={inputs.lastName}
+                      onChange={handleOnChange}
+                    />
+                  </div>
+                  {errors.lastName && <div className="text-red-500 text-sm ">{errors.lastName}</div>}
+                </section>
               </div>
               <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input

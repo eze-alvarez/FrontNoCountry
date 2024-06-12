@@ -171,10 +171,13 @@ const RegistroSolicitante = () => {
               <img src={logoblanco} alt="logo" className=" h-[3rem] w-[12rem] lg:ml-[16rem] mt-[8rem]" />
             </div>
           </div>
+
           <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
             <form onSubmit={handleOnSubmit} className="bg-white w-80">
               <h1 className="text-blue-title font-bold text-2xl text-left py-4">Ingresá tus datos</h1>
+
               <div className="flex gap-2">
+              <section className="flex flex-col">
               <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.name ? "border-red-500" : ""}`}
@@ -185,8 +188,11 @@ const RegistroSolicitante = () => {
                   onChange={handleOnChange}
                 />
               </div>
-              {errors.name && <div className="text-red-500 text-sm mt-2">{errors.name}</div>}
-              <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
+              {errors.name && <div className="text-red-500 text-sm ">{errors.name}</div>}
+              </section>
+
+              <section className="flex flex-col">  
+              <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl ">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.surname ? "border-red-500" : ""}`}
                   type="text"
@@ -196,8 +202,10 @@ const RegistroSolicitante = () => {
                   onChange={handleOnChange}
                 />
               </div>
-              {errors.surname && <div className="text-red-500 text-sm mt-2">{errors.surname}</div>}
+              {errors.surname && <div className="text-red-500 text-sm ">{errors.surname}</div>}
+              </section>
               </div>
+             
               <div className="flex items-center  border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.email ? "border-red-500" : ""}`}
@@ -208,6 +216,8 @@ const RegistroSolicitante = () => {
                   onChange={handleOnChange}
                 />
               </div>
+              {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
+
               <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.bankInformation ? "border-red-500" : ""}`}
@@ -218,8 +228,8 @@ const RegistroSolicitante = () => {
                   onChange={handleOnChange}
                 />
               </div>
-              {errors.bankInformation && <div className="text-red-500 text-sm mt-2">{errors.bankInformation}</div>}
-              {errors.email && <div className="text-red-500 text-sm mt-2">{errors.email}</div>}
+              {errors.bankInformation && <div className="text-red-500 text-sm ">{errors.bankInformation}</div>}
+
 
               <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input
@@ -231,7 +241,7 @@ const RegistroSolicitante = () => {
                   onChange={handleOnChange}
                 />
               </div>
-              {errors.password && <div className="text-red-500 text-sm mt-2">{errors.password}</div>}
+              {errors.password && <div className="text-red-500 text-sm ">{errors.password}</div>}
               <div className="flex gap-2 mb-4">
                 <input
                   className={`pl-2 outline-none border-none  ${errors.isInstitution ? "border-red-500" : ""}`}
@@ -242,7 +252,7 @@ const RegistroSolicitante = () => {
                   onChange={handleOnChange}
                 /><p>Soy una Institucion</p>
               </div>
-              {errors.isInstitution && <div className="text-red-500 text-sm mt-2">{errors.isInstitution}</div>}
+              {errors.isInstitution && <div className="text-red-500 text-sm ">{errors.isInstitution}</div>}
               <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.entityName ? "border-red-500" : ""}`}
@@ -253,7 +263,7 @@ const RegistroSolicitante = () => {
                   onChange={handleOnChange}
                 />
               </div>
-              {errors.entityName && <div className="text-red-500 text-sm mt-2">{errors.entityName}</div>}
+              {errors.entityName && <div className="text-red-500 text-sm ">{errors.entityName}</div>}
               
               <div className="flex justify-center items-center my-4 bg-white">
                 <button className=" bg-forms text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
