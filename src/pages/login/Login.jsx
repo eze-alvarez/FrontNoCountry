@@ -117,7 +117,7 @@ const Login = () => {
       <div className="h-screen sm:flex sm:flex-col mt-14 ">
         <div className=" lg:flex justify-center items-center my-14 ">
 
-          <div className="bg-orange-400 h-36 lg:h-[36rem] lg:w-[45rem] content-center">
+          <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
 
             <div className="mt-14">
               <h1 className="text-white  ">Iniciá tu sesión</h1>
@@ -126,8 +126,8 @@ const Login = () => {
           </div>
           <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
             <form onSubmit={handleOnSubmit} className="bg-white w-80">
-              <h1 className="text-blue font-bold text-2xl text-left py-4">Bienvenido</h1>
-              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+              <h1 className="text-blue-title font-bold text-2xl text-left py-4">Bienvenido</h1>
+              <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl  border-blue-text mb-4">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.email ? "border-red-500" : ""}`}
                   type="email"
@@ -138,7 +138,7 @@ const Login = () => {
                 />
               </div>
               {errors.email && <div className="text-red-500 text-sm mt-2">{errors.email}</div>}
-              <div className="flex items-center border-2 py-2 px-3 rounded-2xl">
+              <div className="flex items-center border-[1px] py-2 px-3  border-blue-text rounded-2xl">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.password ? "border-red-500" : ""}`}
                   type="password"
@@ -154,21 +154,26 @@ const Login = () => {
                 <p className="pl-6 py-4 text-blue text-sm">¿Olvidaste tu contraseña?</p>
               </Link> */}
                 <Link to="/registro">
-                  <p className="py-4 text-blue text-sm">¿No tienes cuenta? Crea una</p>
+                <p className=" text-blue-text text-base mt-4 font-medium ml-28">Olvidaste tu contraseña?</p>
                 </Link>
               </div>
               <div className="mt-4 pl-20">
                 <button
                   type="submit"
-                  className="block w-40 bg-orange-400 h-42 rounded-full text-white rou font-semibold text-sm"
+                  className="block w-40 bg-forms h-42 rounded-full text-white rou font-semibold text-sm"
                   disabled={status.submitting}
                 >
                   {status.submitting ? "Enviando..." : "Iniciar sesión"}
                 </button>
               </div>
+              <div className=" mt-4">
+                <Link to="/registro">
+                  <p className="text-blue-text text-sm text-center">¿Aún no tenés cuenta?</p>
+                </Link>
+              </div>
               <div className="pl-20 mt-4">
                 <Link to="/RegistroSolicitante">
-                  <p className="py-4 font-semibold text-blue-700">Solicitar Donación</p>
+                  <p className="py-4 font-semibold text-blue-title">Solicitar Donación</p>
                 </Link>
               </div>
             </form>

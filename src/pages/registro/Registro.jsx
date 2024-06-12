@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+
 import axios from "axios";
 import logoblanco from '../../assets/Images/commonImg/logoblanco.png';
 
@@ -155,40 +155,42 @@ const Register = () => {
     <>
       <div className="h-screen sm:flex sm:flex-col mt-14">
         <div className=" lg:flex justify-center items-center my-14">
-          <div className="bg-orange-400 h-36 lg:h-[36rem] lg:w-[45rem] content-center">
+          <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
 
             <div className="mt-14">
-              <h1><p  className="text-white  "> Antes de seguir, <br/> queremos conocerte</p></h1>
+              <h1><p className="text-white  "> Antes de seguir, <br /> queremos conocerte</p></h1>
               <img src={logoblanco} alt="logo" className=" h-[3rem] w-[12rem] lg:ml-[16rem] mt-[8rem]" />
             </div>
           </div>
 
           <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
             <form onSubmit={handleOnSubmit} className="bg-white w-80">
-              <h1 className="text-blue font-bold text-2xl text-left py-4">Registro</h1>
-              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                <input
-                  className={`pl-2 outline-none border-none w-full ${errors.firstName ? "border-red-500" : ""}`}
-                  type="text"
-                  id="name"
-                  placeholder="Nombre"
-                  value={inputs.firstName}
-                  onChange={handleOnChange}
-                />
+              <h1 className="text-blue-titel font-bold text-2xl text-left py-4">Ingresá tus datos</h1>
+              <div className="flex gap-2">
+                <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl mb-4  border-blue-text">
+                  <input
+                    className={`pl-2 outline-none border-none w-full ${errors.firstName ? "border-red-500" : ""}`}
+                    type="text"
+                    id="name"
+                    placeholder="Nombre"
+                    value={inputs.firstName}
+                    onChange={handleOnChange}
+                  />
+                </div>
+                {errors.firstName && <div className="text-red-500 text-sm mt-2">{errors.firstName}</div>}
+                <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl mb-4  border-blue-text">
+                  <input
+                    className={`pl-2 outline-none border-none w-full ${errors.lastName ? "border-red-500" : ""}`}
+                    type="text"
+                    id="surname"
+                    placeholder="Apellido"
+                    value={inputs.lastName}
+                    onChange={handleOnChange}
+                  />
+                </div>
+                {errors.lastName && <div className="text-red-500 text-sm mt-2">{errors.lastName}</div>}
               </div>
-              {errors.firstName && <div className="text-red-500 text-sm mt-2">{errors.firstName}</div>}
-              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
-                <input
-                  className={`pl-2 outline-none border-none w-full ${errors.lastName ? "border-red-500" : ""}`}
-                  type="text"
-                  id="surname"
-                  placeholder="Apellido"
-                  value={inputs.lastName}
-                  onChange={handleOnChange}
-                />
-              </div>
-              {errors.lastName && <div className="text-red-500 text-sm mt-2">{errors.lastName}</div>}
-              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+              <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.email ? "border-red-500" : ""}`}
                   type="email"
@@ -199,24 +201,24 @@ const Register = () => {
                 />
               </div>
               {errors.email && <div className="text-red-500 text-sm mt-2">{errors.email}</div>}
-              <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+              <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
                 <input
                   className={`pl-2 outline-none border-none w-full ${errors.password ? "border-red-500" : ""}`}
                   type="password"
-                  id="password"
-                  placeholder="Password"
+                  id="Contraseña"
+                  placeholder="Contraseña"
                   value={inputs.password}
                   onChange={handleOnChange}
                 />
               </div>
 
-              <Link to="/login" className="text-blue-500 ml-2">
+              {/* <Link to="/login" className="text-blue-500 ml-2">
                 ¿Ya tienes una cuenta?
-              </Link>
+              </Link> */}
               <div className="text-red-500 text-sm mt-2">{errors.password}</div>
               <div className="flex justify-center items-center mt-6 bg-white">
 
-                <button className=" bg-orange-400 text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
+                <button className=" bg-forms text-white font-bold py-2 px-4 rounded-2xl" type="submit" disabled={status.submitting}>
                   {status.submitting ? "Registrando..." : "Registrarme"}
                 </button>
               </div>
