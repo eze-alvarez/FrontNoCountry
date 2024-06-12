@@ -10,7 +10,7 @@ export default function Footer({ isNavFooter }) {
   const distribution = isNavFooter ? 'items-start' : 'items-center'; 
 
   return (
-    <footer className={`w-full flex flex-col ${distribution} h-[343px] py-12  sm:h-[159px] sm:flex-row sm:py-0`}>
+    <footer className={`w-full flex flex-col ${distribution} h-[343px] py-12  sm:h-[159px] sm:flex-row sm:py-0 `}>
 
     {/* Spacer to push the section down */}
     <div className="flex-grow sm:hidden"></div>

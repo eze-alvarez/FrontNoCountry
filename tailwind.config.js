@@ -11,7 +11,8 @@ export default {
       },
       backgroundColor: {
         'blue-Nav': 'rgba(3, 67, 99, 0.95)',
-        'nav': '#FDECDF'
+        'nav': '#FDECDF',
+        'forms': '#F78430'
       },
       backgroundImage: {
         'degradado': 'linear-gradient(135deg, rgba(255,138,0,0.443) 15%, rgba(246,246,246,1) 100%)',
