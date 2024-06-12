@@ -23,7 +23,7 @@ const FullCard = ({ data }) => {
     };
 
     return (
-        <div className=" w-344 h-888 bg-main-white rounded-2xl m-auto flex flex-col md:w-full md:max-w-900 md:h-750 mt-16">
+        <div className=" w-344 h-888 bg-main-white rounded-2xl m-auto flex flex-col md:w-full md:max-w-900 md:h-750 mt-16 mb-6">
             <div className="w-full h-201 md:h-300">
                 <img
                     src={infoCard.img}
@@ -33,7 +33,7 @@ const FullCard = ({ data }) => {
             </div>
             <div className="flex flex-col md:flex-row h-full justify-evenly px-5 pb-6 pt-9">
                 <div className="max-w-344 flex flex-col justify-between md:h-full">
-                    <h1 className=" mb-2">{infoCard.title}</h1>
+                    <h1 className="text-start mb-2">{infoCard.title}</h1>
 
                     <p className=" text-blue-text my-4">
                         {infoCard.description}

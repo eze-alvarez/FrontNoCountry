@@ -41,7 +41,7 @@ const Carousel = ({children}) => {
      }
   return (
     <div className=''>
-          <Slider {...settings}>
+          <Slider {...settings} >
                {children}
           </Slider>
     </div>
