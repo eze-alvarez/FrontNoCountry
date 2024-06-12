@@ -15,7 +15,7 @@ export default {
         'forms': '#F78430'
       },
       backgroundImage: {
-        'degradado': 'linear-gradient(135deg, rgba(255,138,0,0.443) 15%, rgba(246,246,246,1) 100%)',
+        'degradado': 'linear-gradient(135deg, rgba(251,226,196,0.6783963585434174) 0%, rgba(245,245,244,1) 100%)',
         'fondo-card': 'linear-gradient(180deg, rgba(2,0,36,0) 41.5%, rgba(255,210,174,1) 41.5%, rgba(158,132,111,1) 250%) '
       },
       colors:{
