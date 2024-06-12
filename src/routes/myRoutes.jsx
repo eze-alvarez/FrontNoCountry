@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoadingSpinner from "../components/UI/Loading/LoadingSpinner";
 import Layout from "../layout/Layout";
 import ScrollToTop from "../components/ScrollToTop/scrollToTop";
+import CreateCampaign from "../pages/CreateCampaign/createCampaign";
 /* Routes */
 
 const Home = lazy(() => import("../pages/Home/Home"));
@@ -28,7 +29,7 @@ const MyRoutes = () => {
             <Route path="/registro" element={<Registro />} />
             <Route path="/registroSolicitante" element={<RegistroSolicitante />} />
 
-
+            <Route path="/test" element={<CreateCampaign />} />
 
             <Route path="*" element={<Error />} />
           </Routes>
