@@ -15,16 +15,17 @@ const SectionCampaigns = () => {
                 ))}
             </Carousel>
             <Link to="/allCampaigns">
-                <p className="text-2xl text-center text-blue-title font-bold mt-9 mb-11 md:mt-20 md:mb-20">
-                    Ver Todas las Campañas
-                </p>
+                <u className=" text-blue-title" >
+                    <p className="text-2xl text-center text-blue-title font-bold mt-12 mb-11 md:mt-20 md:mb-20">
+                        Ver Todas las Campañas
+                    </p>
+                </u>
             </Link>
         </div>
     );
 };
 
 export default SectionCampaigns;
-
 
 /* ~~~~~~~~~~~~~~~~~ Nuevos Cambios NO BORRAR ~~~~~~~~~~~~~~~~~ */
 
@@ -80,5 +81,3 @@ const SectionCampaigns = () => {
 
 export default SectionCampaigns;
  */
-
-

@@ -17,7 +17,7 @@ const CardCampaign = ({ data }) => {
                 />
             </div>
             <div className="flex flex-col h-full justify-between px-5 pb-6 pt-9">
-                <h1 className=" mb-2">{infoCard.title}</h1>
+                <h1 className=" mb-2 text-start">{infoCard.title}</h1>
 
                 <p
                     className=" text-blue-text mb-2"
@@ -81,8 +81,8 @@ const CardCampaign = ({ data }) => {
                         Objetivo: ${infoCard.goal}
                     </p>
                 </div>
-                <Link to={`/campaign/${infoCard.id}`}>
-                    <button className="  bg-btn-orange h-42 w-110 rounded-full self-end ">
+                <Link className="self-end" to={`/campaign/${infoCard.id}`}>
+                    <button className="  bg-btn-orange h-42 w-110 rounded-full  ">
                         <p className="text-white text-xs font-bold">Leer mas</p>
                     </button>
                 </Link>
