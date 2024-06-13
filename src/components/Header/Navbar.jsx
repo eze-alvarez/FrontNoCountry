@@ -1,24 +1,27 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logoNavBlue from '../../assets/Images/headerImg/logo azul.png';
 import {FaWindowClose, FaBars } from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
 
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from "../../redux/actions/actions";
+import { useDispatch } from 'react-redux';
+import {  logout } from "../../redux/actions/actions";
+
 import Footer from '../Footer/Footer';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  /* const [logUser, setLogUser] = useState(false); */
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.isAuthenticated);
-
+  const isAuthenticated = localStorage.getItem('token')? true : false;
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   }
 
   const handleLogout = () => {
-    dispatch(logout()); 
+    dispatch(logout());
+    navigate("/");
   };
 
   return (

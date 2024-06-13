@@ -14,7 +14,7 @@ export default function PopUp({ title, message, message2, closePopUp }) {
   // }, [closePopUp]);
 
   return (
-    <div className="h-screen w-full bg-nav backdrop-blur-18 z-50">
+    <div className="h-screen mx-auto w-full max-w-[420px] bg-nav backdrop-blur-18 z-50">
       <section className="h-[calc(100vh-177px)] pt-64">
         <section className=" flex flex-col h-[calc(100vh-567px)] items-center">
           <article className='text-center h-[calc(100vh-602px)]  grid place-content-center gap-1'>
@@ -29,8 +29,8 @@ export default function PopUp({ title, message, message2, closePopUp }) {
         </section>
       </section>
 
-      <section className="absolute bottom-0 left-0 w-full h-[177px]">
-        <img src={sun} alt="imagen de sol" />
+      <section className="w-full  h-48">
+        <img src={sun} alt="imagen de sol" className="object-cover w-full h-full" />
       </section>
     </div>
   );
