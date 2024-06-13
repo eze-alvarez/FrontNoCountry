@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "../../assets/Images/Forms/logo blanco.png";
 
 const CreateCampaign = () => {
      const [image, setImage] = useState(null);
-
+     
      const handleImageChange = (e) => {
           const file = e.target.files[0];
           if (file) {
