@@ -27,24 +27,23 @@ export const login = (data) => async (dispatch) => {
       payload: user,
     });
     return { success: true };
-
   } catch (error) {
     console.error("Error occurred during login:", error);
 
     // Manejar mensajes de error, verificando si es un array y uniéndolos en una cadena
-    const errorMessage = error.response && error.response.data.message
-      ? Array.isArray(error.response.data.message)
-        ? error.response.data.message.map(err => err.message).join(', ')
-        : error.response.data.message
-      : "Unexpected error occurred";
+    const errorMessage =
+      error.response && error.response.data.message
+        ? Array.isArray(error.response.data.message)
+          ? error.response.data.message.map((err) => err.message).join(", ")
+          : error.response.data.message
+        : "Unexpected error occurred";
 
     // Despachar la acción de login fallido
     dispatch({
       type: LOGIN_FAILURE,
       payload: errorMessage,
     });
-    
-    
+
     // dispatch({
     //   type: LOGIN_FAILURE,
     //   payload: error.response
@@ -52,13 +51,11 @@ export const login = (data) => async (dispatch) => {
     //     : "Unexpected error occurred",
     // });
 
-
     // Retornar objeto indicando fallo y mensaje de error
     return {
       success: false,
       message: errorMessage,
     };
-
 
     // return {
     //   success: false,
@@ -71,15 +68,14 @@ export const login = (data) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   // Eliminar token del localStorage u otros datos de sesión
-  localStorage.removeItem('token');
-  localStorage.removeItem('user');
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 
   // Llamar a una acción para limpiar el estado de autenticación
   dispatch({
     type: LOGOUT_SUCCESS, // Definir un nuevo tipo de acción si es necesario
   });
 };
-
 
 export const registerUser = (userData) => async (dispatch) => {
   try {
@@ -99,11 +95,12 @@ export const registerUser = (userData) => async (dispatch) => {
     console.error("Error occurred during registration:", error);
 
     // Manejar mensajes de error, verificando si es un array y uniéndolos en una cadena
-    const errorMessage = error.response && error.response.data.message
-      ? Array.isArray(error.response.data.message)
-        ? error.response.data.message.map(err => err.message).join(', ')
-        : error.response.data.message
-      : "Unexpected error occurred";
+    const errorMessage =
+      error.response && error.response.data.message
+        ? Array.isArray(error.response.data.message)
+          ? error.response.data.message.map((err) => err.message).join(", ")
+          : error.response.data.message
+        : "Unexpected error occurred";
 
     // Despachar la acción de registro fallido
     dispatch({
@@ -187,7 +184,6 @@ export const getCampaignId = (id) => async (dispatch) => {
 
 export const createCampaign = (campaignData) => async (dispatch) => {
   try {
-
     const token = localStorage.getItem("token");
 
     const response = await axios.post("/campaign/1", campaignData, {
