@@ -29,7 +29,7 @@ function App() {
 
   return (
     <div>
-      <MyRoutes />;
+      <MyRoutes />
     </div>
   );
 }

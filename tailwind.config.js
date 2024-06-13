@@ -11,10 +11,11 @@ export default {
       },
       backgroundColor: {
         'blue-Nav': 'rgba(3, 67, 99, 0.95)',
-        'nav': '#FDECDF'
+        'nav': '#FDECDF',
+        'forms': '#F78430'
       },
       backgroundImage: {
-        'degradado': 'linear-gradient(135deg, rgba(255,138,0,0.443) 15%, rgba(246,246,246,1) 100%)',
+        'degradado': 'linear-gradient(135deg, rgba(251,226,196,0.6783963585434174) 0%, rgba(245,245,244,1) 100%)',
         'fondo-card': 'linear-gradient(180deg, rgba(2,0,36,0) 41.5%, rgba(255,210,174,1) 41.5%, rgba(158,132,111,1) 250%) '
       },
       colors:{
@@ -32,18 +33,24 @@ export default {
       },
       spacing: {
         522: "512px",
-        370: "360px",
+        346: "346px",
         201: "201px",
+        300: "300px",
         110: "110px",
         42: "42px",
         340: "340px",
+        370: "370px",
         407: "407px",
         327: "327px",
         888: "888px",
+        750: "750px",
         45: "45px",
         182: "182px",
         107: "107px",
         92: "92px",
+        1120: "1120px",
+        344: "344px",
+        900: "900px",
     },
     },
   },

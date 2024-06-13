@@ -1,20 +1,32 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logoNavBlue from '../../assets/Images/headerImg/logo azul.png';
 import {FaWindowClose, FaBars } from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
 
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {  logout } from "../../redux/actions/actions";
+
 import Footer from '../Footer/Footer';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  /* const [logUser, setLogUser] = useState(false); */
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isAuthenticated = localStorage.getItem('token')? true : false;
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   }
+
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate("/");
+  };
+
   return (
-    <nav className="fixed w-full h-14   z-30 top-0 text-blue-title bg-nav">
-      <div className="container mx-auto xl:max-w-5xl 2xl:max-w-7xl flex justify-between items-center h-full w-full px-8">
+    <nav className="fixed w-full h-14 lg:h-[68px]  z-30 top-0 text-blue-title bg-nav  ">
+      <div className=" mx-auto  2xl:max-w-[1400px] flex justify-between items-center h-full w-full px-8 xl:px-20">
 
 
         {/* Logo */}
@@ -22,28 +34,48 @@ export default function Navbar() {
           <VscAccount size={25}/>
         </NavLink>
 
-        {/* Logo */}
+        {/* Logo */} 
         <NavLink to="/" className="cursor-pointer font-bold">
-          <img src={logoNavBlue} alt="mano" className="h-[22px] w-[95px]  cursor-pointer" />
+          <img src={logoNavBlue} alt="mano" className="h-[22px]  md:h-[37px] md:w-auto cursor-pointer" />
         </NavLink>
 
         {/* Desktop Menu */}
-        <div className="hidden font-semibold tracking-wider landscape:flex sm:flex">
-          <ul className="flex gap-x-3 text-sm xl:text-xl xl:gap-x-5">
-            <NavLink to="/" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">Home</li>
+        <div className="hidden font-medium tracking-wider landscape:flex sm:flex sm:gap-4 md:gap-14 xl:gap-36">
+          <ul className="flex items-center sm:gap-3 md:gap-5 xl:gap-x-20  text-xs xl:text-base ">
+            
+            <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+              <li className=" hover:scale-[1.1]">¿Quiénes somos?</li>
             </NavLink>
-            <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">¿Quiénes somos?</li>
+            <NavLink to="/allCampaigns" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+              <li className=" hover:scale-[1.1]">Campañas</li>
             </NavLink>
-            <NavLink to="/campañas" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">Campañas</li>
-            </NavLink>
-            <NavLink to="/contactanos" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"}>
-              <li className="uppercase hover:scale-[1.1]">Contactanos</li>
+            <NavLink to="/contactanos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+              <li className=" hover:scale-[1.1]">Contactanos</li>
             </NavLink>
           </ul>
+
+          {isAuthenticated ? ( // Cambio: Mostrar "Cerrar sesión" si el usuario está autenticado
+            <button
+              className="bg-btn-orange rounded-full px-3 xl:px-4 py-2 hidden sm:grid sm:place-content-center tracking-wider"
+              onClick={handleLogout} // Cambio: Llamar a handleLogout al hacer clic en "Cerrar sesión"
+            >
+              <p className="text-white text-xs xl:text-base font-medium">Cerrar sesión</p> {/* Cambio: Texto del botón cuando está autenticado */}
+            </button>
+          ) : (
+            <NavLink to="/login">
+              <button className="bg-white rounded-full px-3 xl:px-4 py-2 hidden sm:grid sm:place-content-center tracking-wider">
+                <p className="text-blue-title text-xs xl:text-base font-medium">Iniciar sesión</p> {/* Cambio: Texto del botón cuando no está autenticado */}
+              </button>
+            </NavLink>
+          )}
+
+          {/* <NavLink to="/login">
+          <button className="  bg-white  rounded-full   px-3 xl:px-4 py-2   hidden sm:grid sm:place-content-center tracking-wider">
+                <p className="text-blue-title text-xs xl:text-base font-medium">Iniciar sesión</p>
+          </button>
+          </NavLink> */}
         </div>
+        
 
         {/* Mobile Menu Toggle */}
         <div onClick={handleNav} className="sm:hidden cursor-pointer">
@@ -51,6 +83,8 @@ export default function Navbar() {
             <FaBars size={15} className='text-blue-title'/>
           </div>
         </div>
+
+        
       </div>
 
 
@@ -73,12 +107,20 @@ export default function Navbar() {
               <FaWindowClose size={25} className='text-white'/>
             </div>
           </div>
+          
           {/* Mobile Menu Links */}
           <div className="flex-col font-bold tracking-wider mt-10">
             <ul className='flex flex-col'>
-              <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
+            {isAuthenticated ? ( 
+                <li className="text-white mt-11" onClick={() => { handleLogout(); setMenuOpen(false); }}>Cerrar sesión</li> 
+              ) : (
+                <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
+                  <li className="mt-11">Iniciar sesión</li> 
+                </NavLink>
+              )}
+              {/* <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className="">Iniciar sesión</li>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className="mt-11">Home</li>
               </NavLink>
