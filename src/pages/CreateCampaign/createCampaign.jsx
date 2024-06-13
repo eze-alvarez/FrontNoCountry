@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "../../assets/Images/Forms/logo blanco.png";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -123,6 +123,7 @@ const CreateCampaign = () => {
                });
           }
      };
+
 
      const handleImageChange = (e) => {
           const file = e.target.files[0];

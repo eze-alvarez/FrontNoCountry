@@ -4,14 +4,23 @@ import {FaWindowClose, FaBars } from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
 
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from "../../redux/actions/actions";
 import Footer from '../Footer/Footer';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   }
+
+  const handleLogout = () => {
+    dispatch(logout()); 
+  };
+
   return (
     <nav className="fixed w-full h-14 lg:h-[68px]  z-30 top-0 text-blue-title bg-nav  ">
       <div className=" mx-auto  2xl:max-w-[1400px] flex justify-between items-center h-full w-full px-8 xl:px-20">
@@ -41,11 +50,27 @@ export default function Navbar() {
               <li className=" hover:scale-[1.1]">Contactanos</li>
             </NavLink>
           </ul>
-          <NavLink to="/login">
+
+          {isAuthenticated ? ( // Cambio: Mostrar "Cerrar sesión" si el usuario está autenticado
+            <button
+              className="bg-btn-orange rounded-full px-3 xl:px-4 py-2 hidden sm:grid sm:place-content-center tracking-wider"
+              onClick={handleLogout} // Cambio: Llamar a handleLogout al hacer clic en "Cerrar sesión"
+            >
+              <p className="text-white text-xs xl:text-base font-medium">Cerrar sesión</p> {/* Cambio: Texto del botón cuando está autenticado */}
+            </button>
+          ) : (
+            <NavLink to="/login">
+              <button className="bg-white rounded-full px-3 xl:px-4 py-2 hidden sm:grid sm:place-content-center tracking-wider">
+                <p className="text-blue-title text-xs xl:text-base font-medium">Iniciar sesión</p> {/* Cambio: Texto del botón cuando no está autenticado */}
+              </button>
+            </NavLink>
+          )}
+
+          {/* <NavLink to="/login">
           <button className="  bg-white  rounded-full   px-3 xl:px-4 py-2   hidden sm:grid sm:place-content-center tracking-wider">
                 <p className="text-blue-title text-xs xl:text-base font-medium">Iniciar sesión</p>
           </button>
-          </NavLink>
+          </NavLink> */}
         </div>
         
 
@@ -79,12 +104,20 @@ export default function Navbar() {
               <FaWindowClose size={25} className='text-white'/>
             </div>
           </div>
+          
           {/* Mobile Menu Links */}
           <div className="flex-col font-bold tracking-wider mt-10">
             <ul className='flex flex-col'>
-              <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
+            {isAuthenticated ? ( 
+                <li className="text-white mt-11" onClick={() => { handleLogout(); setMenuOpen(false); }}>Cerrar sesión</li> 
+              ) : (
+                <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
+                  <li className="mt-11">Iniciar sesión</li> 
+                </NavLink>
+              )}
+              {/* <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className="">Iniciar sesión</li>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className="mt-11">Home</li>
               </NavLink>
