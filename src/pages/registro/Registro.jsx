@@ -69,8 +69,10 @@ const Register = () => {
 
   return (
     <>
+
       <div className={`h-screen sm:flex sm:flex-col mt-14 ${showPopUp? "hidden": "flex" }`}>
         <div className=" lg:flex justify-center items-center my-14 w-full">
+
           <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
           <div className="mt-14">
               <h1><p  className="text-white  "> Antes de seguir, <br/> queremos conocerte</p></h1>
@@ -79,7 +81,7 @@ const Register = () => {
           </div>
 
           <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
-          <form onSubmit={handleSubmit} className="bg-white w-80">
+          <form onSubmit={handleSubmit} className="bg-white w-80 mt-[4rem]">
 
             <h1 className="text-blue-title font-bold text-2xl text-left py-4">Ingresá tus datos</h1>
               <div className="flex gap-2">
@@ -132,7 +134,7 @@ const Register = () => {
             {/* <Link to="/login" className="text-blue-500 ml-2">
               ¿Ya tienes una cuenta?
             </Link> */}
-            <div className="flex justify-center items-center mt-6 bg-white">
+            <div className="flex justify-center items-center mb-32 mt-6 bg-white">
               <button
                 className=" bg-forms text-white font-bold py-2 px-4 rounded-2xl"
                 type="submit"

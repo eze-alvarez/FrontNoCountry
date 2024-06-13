@@ -6,6 +6,7 @@ import logoblanco from "../../assets/Images/commonImg/logoblanco.png";
 import PopUp from "../../components/PopUp/PopUp";
 
 const RegistroSolicitante = () => {
+
      const dispatch = useDispatch();
      const navigate = useNavigate();
 
@@ -169,6 +170,7 @@ const RegistroSolicitante = () => {
                                         />
                                    </div>
                                    {/* <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
+
               <input
                 className={`pl-2 outline-none border-none w-full`}
                 type="checkbox"
@@ -178,6 +180,7 @@ const RegistroSolicitante = () => {
                 onChange={handleOnChange}
               />
             </div> */}
+
                                    <div className="flex justify-center items-center my-4 bg-white">
                                         <button
                                              className=" bg-forms text-white font-bold py-2 px-4 rounded-2xl"
@@ -201,6 +204,7 @@ const RegistroSolicitante = () => {
                )}
           </>
      );
+
 };
 
 export default RegistroSolicitante;

@@ -76,6 +76,7 @@ const Login = () => {
                               </div>
                          </div>
 
+
                          <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
                               <form
                                    onSubmit={handleSubmit}
@@ -97,6 +98,7 @@ const Login = () => {
                                         />
                                    </div>
 
+
                                    <div className="flex items-center border-[1px] py-2 px-3  border-blue-text rounded-2xl">
                                         <input
                                              className={`pl-2 outline-none border-none w-full`}
@@ -115,6 +117,7 @@ const Login = () => {
                                         {/* <Link to="#">
                 <p className="pl-6 py-4 text-blue text-sm">¿Olvidaste tu contraseña?</p>
               </Link> */}
+
                                         <Link to="/registro">
                                              <p className="py-4 text-blue-text text-sm ml-28">
                                                   Olvidaste tu contraseña?
@@ -156,6 +159,7 @@ const Login = () => {
                )}
           </>
      );
+
 };
 
 export default Login;
