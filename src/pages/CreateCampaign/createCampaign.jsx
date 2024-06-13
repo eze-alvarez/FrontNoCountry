@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Logo from "../../assets/Images/Forms/logo blanco.png";
 import axios from "axios";
 
 const CreateCampaign = () => {
+
      const [preview, setPreview] = useState(null);
      const [status, setStatus] = useState({
           submitted: false,
@@ -87,6 +88,7 @@ const CreateCampaign = () => {
                });
           }
      };
+
 
      const handleImageChange = (e) => {
           const file = e.target.files[0];
