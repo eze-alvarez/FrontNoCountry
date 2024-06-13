@@ -64,6 +64,7 @@ const Register = () => {
         password: null,
       });
       history.push("/login");
+      window.location.href = "/";
     } else {
       setStatus({
         info: { error: true, msg: msg },
