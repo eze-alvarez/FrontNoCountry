@@ -9,6 +9,7 @@ import CreateCampaign from "../pages/CreateCampaign/createCampaign";
 const Home = lazy(() => import("../pages/Home/Home"));
 const Campaign = lazy(() => import("../pages/Campaign/campaign"));
 const AllCampaigns = lazy(() => import("../pages/AllCampaigns/allCampaigns"));
+const About = lazy(() => import("../pages/about/About"));
 const Login = lazy(() => import("../pages/login/Login"));
 const Registro = lazy(() => import("../pages/registro/Registro"));
 const RegistroSolicitante = lazy(() => import("../pages/registroSolicitante/RegistroSolicitante"));
@@ -28,7 +29,7 @@ const MyRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/registroSolicitante" element={<RegistroSolicitante />} />
-
+            <Route path="/quienes-somos" element={<About/>} />
             <Route path="/test" element={<CreateCampaign />} />
 
             <Route path="*" element={<Error />} />
