@@ -47,7 +47,7 @@ const Login = () => {
           </div>
 
           <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
-            <form onSubmit={handleSubmit} className="bg-white w-80">
+            <form onSubmit={handleSubmit} className="bg-white w-80 mt-[4rem]">
               <h1 className="text-blue-title font-bold text-2xl text-left py-4">Bienvenido</h1>
               <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl  border-blue-text mb-4">
                 <input
@@ -92,7 +92,7 @@ const Login = () => {
                   <p className="text-blue-text text-sm text-center">¿Aún no tenés cuenta?</p>
                 </Link>
               </div>
-              <div className="pl-20 mt-4">
+              <div className="pl-20 mt-4 mb-32">
                 <Link to="/RegistroSolicitante">
                   <p className="py-4 font-semibold text-blue-title">
                     Solicitar Donación

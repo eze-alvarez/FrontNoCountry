@@ -52,7 +52,7 @@ const RegistroSolicitante = () => {
 
 
           <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
-            <form onSubmit={handleSubmit} className="bg-white w-80">
+            <form onSubmit={handleSubmit} className="bg-white w-80 mt-[4rem]">
               <h1 className="text-blue-title font-bold text-2xl text-left py-4">Ingresá tus datos</h1>
               <div className="flex gap-2">
                 <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
@@ -131,7 +131,7 @@ const RegistroSolicitante = () => {
                 onChange={handleOnChange}
               />
             </div> */}
-              <div className="flex justify-center items-center my-4 bg-white">
+              <div className="flex justify-center items-center my-4 mb-28 bg-white">
                 <button
                   className=" bg-forms text-white font-bold py-2 px-4 rounded-2xl"
                   type="submit"
