@@ -1,6 +1,6 @@
 
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch} from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerEntiti } from "../../redux/actions/actions";
 import logoblanco from '../../assets/Images/commonImg/logoblanco.png';
@@ -11,7 +11,7 @@ import PopUp from "../../components/PopUp/PopUp";
 const RegistroSolicitante = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  
   const [showPopUp, setShowPopUp] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -24,12 +24,7 @@ const RegistroSolicitante = () => {
     isInstitution: false,
   });
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/dashboard/create");
-    }
-  }, [isAuthenticated, navigate]);
-
+ 
   const handleChange = (event) => {
     setFormData({
       ...formData,
@@ -44,9 +39,8 @@ const RegistroSolicitante = () => {
         if (response.success) {
           setShowPopUp(true); // Mostrar PopUp después del registro exitoso
           setTimeout(() => {
-            setShowPopUp(false);
-            navigate("/dashboard/create"); // Redirigir después de 5 segundos
-          }, 5000);
+            navigate("/test"); // Redirigir después de 3 segundos
+          }, 3000);
           
         } else {
           // Mostrar mensaje de error específico si no fue exitoso
@@ -69,7 +63,7 @@ const RegistroSolicitante = () => {
 
   return (
     <>
-      <div className="h-screen sm:flex sm:flex-col mt-14 ">
+      <div className={`h-screen sm:flex sm:flex-col mt-14 ${showPopUp? "hidden": "flex" }`}>
         <div className=" lg:flex justify-center items-center my-14 ">
           <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
             <div className="mt-14">
