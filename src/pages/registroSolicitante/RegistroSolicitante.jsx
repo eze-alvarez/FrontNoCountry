@@ -38,10 +38,10 @@ const RegistroSolicitante = () => {
                          setShowPopUp(true); // Mostrar PopUp después del registro exitoso
                          setTimeout(() => {
                               navigate("/test"); // Redirigir después de 3 segundos
-                         }, 3000);
-                         console.log("aaa")
+                         }, 2000);
+                         
                     } else {
-                      console.log(formData)
+                      
                          // Mostrar mensaje de error específico si no fue exitoso
                          const errorMessage = Array.isArray(response.message)
                               ? response.message.join(", ")

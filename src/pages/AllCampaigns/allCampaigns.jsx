@@ -11,7 +11,7 @@ const AllCampaigns = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getCampaigns());
+        dispatch(getCampaign());
     }, [allCampaigns]);
 
     return (
