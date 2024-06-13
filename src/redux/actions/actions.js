@@ -190,7 +190,7 @@ export const createCampaign = (campaignData) => async (dispatch) => {
 
     const token = localStorage.getItem("token");
 
-    const response = await axios.post("/campaign", campaignData, {
+    const response = await axios.post("/campaign/1", campaignData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

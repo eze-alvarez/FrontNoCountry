@@ -23,20 +23,18 @@ const Login = () => {
           event.preventDefault();
           dispatch(login({ email, password }))
                .then((response) => {
-                    console.log(response);
+                    
                     if (response.success) {
-                      console.log("aaaa")
                       setShowPopUp(true);
                          setTimeout(() => {
                               navigate("/");
                          }, 3000);
                     } else {
-                      console.log("bbbb")
                          // Mostrar mensajes de error unificados en caso de fallo
                          const errorMessage = Array.isArray(response.message)
                               ? response.message.join(", ")
                               : response.message;
-                         alert("Login failed: " + errorMessage);
+                         alert("Login failed: " + errorMessage + " " + response.message);
                          // alert("Login failed: " + response.message);
                     }
                })
@@ -62,7 +60,7 @@ const Login = () => {
                          showPopUp ? "hidden" : "flex"
                     }`}
                >
-                    <div className=" lg:flex justify-center items-center my-14 ">
+                    <div className=" lg:flex justify-center w-full items-center my-14 ">
                          <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
                               <div className="mt-14">
                                    <h1 className="text-white  ">
@@ -140,7 +138,7 @@ const Login = () => {
                                              </p>
                                         </Link>
                                    </div>
-                                   <div className="pl-20 mt-4">
+                                   <div className="pl-20 pb-6 mt-4">
                                         <Link to="/RegistroSolicitante">
                                              <p className="py-4 font-semibold text-blue-title">
                                                   Solicitar Donación

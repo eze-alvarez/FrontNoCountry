@@ -14,7 +14,7 @@ const CreateCampaign = () => {
 
      const [preview, setPreview] = useState(null);
      const [inputs, setInputs] = useState({
-          image: "",
+          image: null,
           title: "",
           monetary_goal: "",
           description: "",
@@ -22,23 +22,55 @@ const CreateCampaign = () => {
      });
 
      const handleInputChange = (e) => {
-          setInputs({
+          const { name, value, files } = e.target;
+          
+          console.log(files[0])
+          if(name === "image") {
+               setInputs({
+                   ...inputs,
+                    image: files[0],
+               });
+          } else {
+               setInputs({
+                   ...inputs,
+                    [name]: value,
+               });
+          }
+          
+          /* setInputs({
                ...inputs,
                [e.target.name]: e.target.value,
           });
           if (e.target.name === "image") {
                const imgUrl = URL.createObjectURL(e.target.files[0]);
                setPreview(imgUrl);
-          }
+               console.log(imgUrl)
+          } */
      };
 
      const handleSubmit = async (e) => {
           e.preventDefault();
+
+          const formData = new FormData();
+
+          formData.append("image", inputs.image);
+          formData.append("title", inputs.title);
+          formData.append("monetary_goal", inputs.monetary_goal);
+          formData.append("description", inputs.description);
+          formData.append("entitiId", inputs.entitiId);
+
           const result = await dispatch(createCampaign(inputs));
-          console.log("result", result);
+          
+          console.log(inputs)
 
           if (result.success) {
-               
+               setInputs({
+                    image: "",
+                    title: "",
+                    monetary_goal: "",
+                    description: "",
+                    entitiId: user ? user.id : "",
+               });
                setShowPopUp(true);
                setTimeout(() => {
                     navigate("/");
