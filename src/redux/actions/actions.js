@@ -187,14 +187,15 @@ export const getCampaignId = (id) => async (dispatch) => {
 
 export const createCampaign = (campaignData) => async (dispatch) => {
   try {
-    const token = localStorage.getItem("token")
-    const response = await axios.post("/campaign", campaignData, 
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+
+    const token = localStorage.getItem("token");
+
+    const response = await axios.post("/campaign", campaignData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
     console.log("response createCampaign", response);
 
     dispatch({

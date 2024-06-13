@@ -1,10 +1,45 @@
 import { useState } from "react";
 import Logo from "../../assets/Images/Forms/logo blanco.png";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { createCampaign } from "../../redux/actions/actions";
 
 const CreateCampaign = () => {
-
+     const dispatch = useDispatch();
+     const user = useSelector((state) => state.user);
      const [preview, setPreview] = useState(null);
+     const [inputs, setInputs] = useState({
+          image: "",
+          title: "",
+          monetary_goal: "",
+          description: "",
+          entitiId: user ? user.id : "",
+     });
+
+     const handleInputChange = (e) => {
+          setInputs({
+               ...inputs,
+               [e.target.name]: e.target.value,
+          });
+          if(e.target.name === "image"){
+               const imgUrl = URL.createObjectURL(e.target.files[0]);
+               setPreview(imgUrl);
+          }
+     };
+
+     const handleSubmit = async (e) => {
+          e.preventDefault();
+          const result = await dispatch(createCampaign(inputs));
+          console.log("result", result);
+
+          if (result.success) {
+               alert("Campaña creada");
+          } else {
+               alert("Campaña no creada" + result.message);
+          }
+     };
+
+     /* const [preview, setPreview] = useState(null);
      const [status, setStatus] = useState({
           submitted: false,
           submitting: false,
@@ -22,9 +57,9 @@ const CreateCampaign = () => {
           title: null,
           goal: null,
           description: null,
-     });
+     }); */
 
-     const validateImage = (image) => {
+     /* const validateImage = (image) => {
           // Agrega la validación de image aquí
           if (!image.trim()) {
                setErrors((prev) => ({
@@ -39,9 +74,9 @@ const CreateCampaign = () => {
                }));
                return true;
           }
-     };
+     }; */
 
-     const validateTitle = (title) => {
+     /* const validateTitle = (title) => {
           // Agrega la validación de title aquí
           return title.trim().length > 0;
      };
@@ -57,9 +92,9 @@ const CreateCampaign = () => {
                description.trim().length > 10 &&
                description.trim().length < 1000
           );
-     };
+     }; */
 
-     const handleServerResponse = (ok, msg) => {
+     /* const handleServerResponse = (ok, msg) => {
           if (ok) {
                setStatus({
                     submitted: true,
@@ -160,9 +195,9 @@ const CreateCampaign = () => {
                isGoalValid &&
                isDescriptionValid
           ) {
-               /* axios({
+               axios({
                     method: "POST",
-                    url: "http://localhost:8000/api/campaigns/",
+                    url: "https://back-no-country-c18-03-m-node.fly.dev/api/v1/campaign/",
                     data: inputs,
                })
                     .then((response) => {
@@ -178,9 +213,9 @@ const CreateCampaign = () => {
                               error.response.data.error
                          );
                          console.log(error);
-                    }); */
+                    });
 
-               handleServerResponse(true, "Campaña creada exitosamente");
+               
                console.log(inputs);
           } else {
                setErrors({
@@ -197,6 +232,8 @@ const CreateCampaign = () => {
                }));
           }
      };
+
+      */
 
      return (
           <div className="pt-15 mt-12 flex flex-col m-auto md:flex-row">
@@ -217,11 +254,12 @@ const CreateCampaign = () => {
                          Crea tu campaña
                     </h1>
                     <div
-                         className={`p-[2px] h-60 w-370 rounded-lg border-[1px] ${
+                         className={`p-[2px] h-60 w-370 rounded-lg border-[1px] border-blue-text bg-white  my-4 relative flex justify-center items-center`}
+                         /* className={`p-[2px] h-60 w-370 rounded-lg border-[1px] ${
                               errors.image
                                    ? "border-red-500"
                                    : "border-blue-text"
-                         } bg-white  my-4 relative flex justify-center items-center`}
+                         } bg-white  my-4 relative flex justify-center items-center`} */
                     >
                          <p className="absolute">Agregar foto</p>
                          {preview && (
@@ -232,69 +270,73 @@ const CreateCampaign = () => {
                               />
                          )}
                     </div>
-                    {errors.image && (
+                    {/* {errors.image && (
                          <p className="text-red-500 text-sm">{errors.image}</p>
-                    )}
+                    )} */}
 
-                    <form className="flex flex-col items-center justify-start">
+                    <form
+                         onSubmit={handleSubmit}
+                         className="flex flex-col items-center justify-start"
+                    >
                          <input
                               type="file"
-                              id="image"
+                              name="image"
                               accept="image/*"
-                              onChange={handleImageChange}
+                              onChange={handleInputChange}
                               className=" text-transparent  my-1 mx-6 md:my-22 flex text-sm file:bg-orange-title file:text-main-white file:border-none file:w-110 file:h-42 file:rounded-full hover:file:bg-orange-bar"
                          />
 
                          <input
                               type="text"
-                              className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
+                              className={`mt-4 h-12 w-80 rounded-lg border-[1px] border-blue-text px-2`}
+                              /* className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
                                    errors.title
                                         ? "border-red-500"
                                         : "border-blue-text"
-                              }   px-2`}
-                              id="title"
+                              }   px-2`} */
+                              required
                               placeholder="Titulo"
                               onChange={handleInputChange}
-                              value={inputs.title}
+                              name="title"
                          />
-                         {errors.title && (
+                         {/* {errors.title && (
                               <p className="text-red-500 text-xs">
                                    {errors.title}
                               </p>
-                         )}
+                         )} */}
                          <input
                               type="number"
-                              id="goal"
-                              value={inputs.goal}
-                              className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
+                              name="monetary_goal"
+                              className={`mt-4 h-12 w-80 rounded-lg border-[1px] border-blue-text px-2`}
+                              /* className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
                                    errors.goal
                                         ? "border-red-500"
                                         : "border-blue-text"
-                              }  px-2`}
+                              }  px-2`} */
                               onChange={handleInputChange}
                               placeholder="Monto"
                          />
-                         {errors.goal && (
+                         {/* {errors.goal && (
                               <p className="text-red-500 text-xs">
                                    {errors.goal}
                               </p>
-                         )}
+                         )} */}
                          <textarea
-                              value={inputs.description}
-                              id="description"
-                              className={`mt-4 h-52 w-80 rounded-lg border-[1px] ${
+                              name="description"
+                              className={`mt-4 h-52 w-80 rounded-lg border-[1px] border-blue-text p-3`}
+                              /* className={`mt-4 h-52 w-80 rounded-lg border-[1px] ${
                                    errors.description
                                         ? "border-red-500"
                                         : "border-blue-text"
-                              } p-3`}
+                              } p-3`} */
                               onChange={handleInputChange}
                               placeholder="Descripcion"
                          />
-                         {errors.description && (
+                         {/* {errors.description && (
                               <p className="text-red-500 text-xs">
                                    {errors.description}
                               </p>
-                         )}
+                         )} */}
                          <button
                               onClick={handleSubmit}
                               className="bg-btn-orange h-42 w-110 rounded-full my-6 self-center"
