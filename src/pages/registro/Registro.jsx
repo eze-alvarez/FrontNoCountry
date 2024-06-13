@@ -1,7 +1,7 @@
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { registerUser } from "../../redux/actions/actions";
 import logoblanco from '../../assets/Images/commonImg/logoblanco.png';
 import PopUp from "../../components/PopUp/PopUp";
@@ -9,7 +9,7 @@ import PopUp from "../../components/PopUp/PopUp";
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  // const isAuthenticated = useSelector((state) => state.isAuthenticated);
 
   const [showPopUp, setShowPopUp] = useState(false);
 
@@ -31,11 +31,16 @@ const Register = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     dispatch(registerUser(formData))
       .then((response) => {
         if (response.success) {
-          alert("Registration successful!");
-          navigate("/login"); // Navegar a la página de login después de un registro exitoso
+          // alert("Registration successful!");
+          setShowPopUp(true);
+          // Después de 5 segundos, redirige al usuario al login
+          setTimeout(() => {
+            navigate("/login");
+          }, 3000);
         } else {
           // Mostrar mensajes de error unificados en caso de fallo
           const errorMessage = Array.isArray(response.message)
@@ -55,21 +60,17 @@ const Register = () => {
       });
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      // Si el registro se realizó correctamente, muestra el PopUp por 5 segundos
-      setShowPopUp(true);
-      // Después de 5 segundos, redirige al usuario al login
-      setTimeout(() => {
-        navigate("/login");
-      }, 5000);
-    }
-  }, [isAuthenticated, navigate]);
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     // Si el registro se realizó correctamente, muestra el PopUp por 5 segundos
+     
+  //   }
+  // }, [isAuthenticated, navigate]);
 
   return (
     <>
-      <div className="h-screen sm:flex sm:flex-col mt-14 ">
-        <div className=" lg:flex justify-center items-center my-14 ">
+      <div className={`h-screen sm:flex sm:flex-col mt-14 ${showPopUp? "hidden": "flex" }`}>
+        <div className=" lg:flex justify-center items-center my-14 w-full">
           <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
           <div className="mt-14">
               <h1><p  className="text-white  "> Antes de seguir, <br/> queremos conocerte</p></h1>
