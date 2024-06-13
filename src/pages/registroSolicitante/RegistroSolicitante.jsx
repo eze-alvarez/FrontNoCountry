@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerEntiti } from "../../redux/actions/actions";
 import logoblanco from '../../assets/Images/commonImg/logoblanco.png';
+import PopUp from "../../components/PopUp/PopUp";
+
 
 
 const RegistroSolicitante = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.isAuthenticated);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -36,7 +39,32 @@ const RegistroSolicitante = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(registerEntiti(formData));
+    dispatch(registerEntiti(formData))
+      .then((response) => {
+        if (response.success) {
+          setShowPopUp(true); // Mostrar PopUp después del registro exitoso
+          setTimeout(() => {
+            setShowPopUp(false);
+            navigate("/dashboard/create"); // Redirigir después de 5 segundos
+          }, 5000);
+          
+        } else {
+          // Mostrar mensaje de error específico si no fue exitoso
+          const errorMessage = Array.isArray(response.message)
+            ? response.message.join(", ")
+            : response.message;
+          alert("Error en el registro: " + errorMessage);
+        }
+      })
+      .catch((error) => {
+        // Manejar errores de red, servidor, etc.
+        const message = error.response && error.response.data.message
+          ? Array.isArray(error.response.data.message)
+            ? error.response.data.message.map(err => err.message).join(', ')
+            : error.response.data.message
+          : "Ocurrió un error inesperado";
+        alert("Error: " + message);
+      });
   };
 
   return (
@@ -63,6 +91,7 @@ const RegistroSolicitante = () => {
                     placeholder="Nombre"
                     value={formData.name}
                     onChange={handleChange}
+                    required
                   />
                 </div>
 
@@ -74,6 +103,7 @@ const RegistroSolicitante = () => {
                     placeholder="Apellido"
                     value={formData.surname}
                     onChange={handleChange}
+                    required
                   />
                 </div>
               </div>
@@ -86,6 +116,7 @@ const RegistroSolicitante = () => {
                   placeholder="Emails"
                   value={formData.email}
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -97,6 +128,7 @@ const RegistroSolicitante = () => {
                   placeholder="Cbu"
                   value={formData.bankInformation}
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -108,6 +140,7 @@ const RegistroSolicitante = () => {
                   placeholder="Contraseña"
                   value={formData.password}
                   onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -119,6 +152,7 @@ const RegistroSolicitante = () => {
                   placeholder="Nombre de la institución"
                   value={formData.entityName}
                   onChange={handleChange}
+                  required
                 />
               </div>
               {/* <div className="flex items-center border-2 py-2 px-3 rounded-2xl mb-4">
@@ -144,6 +178,14 @@ const RegistroSolicitante = () => {
           </div>
         </div>
       </div>
+       {/* PopUp */}
+       {showPopUp && (
+        <PopUp
+          title={formData.entityName}
+          message="Gracias por unirte a"
+          closePopUp={() => setShowPopUp(false)}
+        />
+      )}
     </>
   );
 };
