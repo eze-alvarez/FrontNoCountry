@@ -3,10 +3,15 @@ import Logo from "../../assets/Images/Forms/logo blanco.png";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { createCampaign } from "../../redux/actions/actions";
+import PopUp from "../../components/PopUp/PopUp";
+import { useNavigate } from "react-router-dom";
 
 const CreateCampaign = () => {
      const dispatch = useDispatch();
      const user = useSelector((state) => state.user);
+     const [showPopUp, setShowPopUp] = useState(false);
+     const navigate = useNavigate();
+
      const [preview, setPreview] = useState(null);
      const [inputs, setInputs] = useState({
           image: "",
@@ -21,7 +26,7 @@ const CreateCampaign = () => {
                ...inputs,
                [e.target.name]: e.target.value,
           });
-          if(e.target.name === "image"){
+          if (e.target.name === "image") {
                const imgUrl = URL.createObjectURL(e.target.files[0]);
                setPreview(imgUrl);
           }
@@ -33,7 +38,11 @@ const CreateCampaign = () => {
           console.log("result", result);
 
           if (result.success) {
-               alert("Campaña creada");
+               
+               setShowPopUp(true);
+               setTimeout(() => {
+                    navigate("/");
+               }, 3000);
           } else {
                alert("Campaña no creada" + result.message);
           }
@@ -236,118 +245,131 @@ const CreateCampaign = () => {
       */
 
      return (
-          <div className="pt-15 mt-12 flex flex-col m-auto md:flex-row">
-               <div className="bg-forms md:h-screen h-60 flex flex-col justify-center items-start md:items-center  md:w-full">
-                    <p className="text-white  text-2xl font-medium mt-12 md:mt-0 w-32 md:ml-0 ml-6">
-                         Contanos tu historia
-                    </p>
-                    <div className="hidden md:block w-64 mt-32">
-                         <img
-                              src={Logo}
-                              alt="Logo"
-                              className="object-cover w-full h-full"
-                         />
+          <>
+               <div
+                    className={`pt-15 mt-12 ${
+                         showPopUp ? "hidden" : "flex"
+                    } flex-col m-auto md:flex-row`}
+               >
+                    <div className="bg-forms md:h-screen h-60 flex flex-col justify-center items-start md:items-center  md:w-full">
+                         <p className="text-white  text-2xl font-medium mt-12 md:mt-0 w-32 md:ml-0 ml-6">
+                              Contanos tu historia
+                         </p>
+                         <div className="hidden md:block w-64 mt-32">
+                              <img
+                                   src={Logo}
+                                   alt="Logo"
+                                   className="object-cover w-full h-full"
+                              />
+                         </div>
                     </div>
-               </div>
-               <div className="flex flex-col pt-9 md:mt-0 md:pt-14 w-full md:w-2/3 justify-start items-center md:h-screen m-auto bg-white">
-                    <h1 className="my-2 pl-5 w-full text-start">
-                         Crea tu campaña
-                    </h1>
-                    <div
-                         className={`p-[2px] h-60 w-370 rounded-lg border-[1px] border-blue-text bg-white  my-4 relative flex justify-center items-center`}
-                         /* className={`p-[2px] h-60 w-370 rounded-lg border-[1px] ${
+                    <div className="flex flex-col pt-9 md:mt-0 md:pt-14 w-full md:w-2/3 justify-start items-center md:h-screen m-auto bg-white">
+                         <h1 className="my-2 pl-5 w-full text-start">
+                              Crea tu campaña
+                         </h1>
+                         <div
+                              className={`p-[2px] h-60 w-370 rounded-lg border-[1px] border-blue-text bg-white  my-4 relative flex justify-center items-center`}
+                              /* className={`p-[2px] h-60 w-370 rounded-lg border-[1px] ${
                               errors.image
                                    ? "border-red-500"
                                    : "border-blue-text"
-                         } bg-white  my-4 relative flex justify-center items-center`} */
-                    >
-                         <p className="absolute">Agregar foto</p>
-                         {preview && (
-                              <img
-                                   src={preview}
-                                   alt="Vista previa de la imagen"
-                                   className="rounded-lg object-cover w-full h-full z-10"
-                              />
-                         )}
-                    </div>
-                    {/* {errors.image && (
+                                   } bg-white  my-4 relative flex justify-center items-center`} */
+                         >
+                              <p className="absolute">Agregar foto</p>
+                              {preview && (
+                                   <img
+                                        src={preview}
+                                        alt="Vista previa de la imagen"
+                                        className="rounded-lg object-cover w-full h-full z-10"
+                                   />
+                              )}
+                         </div>
+                         {/* {errors.image && (
                          <p className="text-red-500 text-sm">{errors.image}</p>
-                    )} */}
+                         )} */}
 
-                    <form
-                         onSubmit={handleSubmit}
-                         className="flex flex-col items-center justify-start"
-                    >
-                         <input
-                              type="file"
-                              name="image"
-                              accept="image/*"
-                              onChange={handleInputChange}
-                              className=" text-transparent  my-1 mx-6 md:my-22 flex text-sm file:bg-orange-title file:text-main-white file:border-none file:w-110 file:h-42 file:rounded-full hover:file:bg-orange-bar"
-                         />
+                         <form
+                              onSubmit={handleSubmit}
+                              className="flex flex-col items-center justify-start"
+                         >
+                              <input
+                                   type="file"
+                                   name="image"
+                                   accept="image/*"
+                                   onChange={handleInputChange}
+                                   className=" text-transparent  my-1 mx-6 md:my-22 flex text-sm file:bg-orange-title file:text-main-white file:border-none file:w-110 file:h-42 file:rounded-full hover:file:bg-orange-bar"
+                              />
 
-                         <input
-                              type="text"
-                              className={`mt-4 h-12 w-80 rounded-lg border-[1px] border-blue-text px-2`}
-                              /* className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
+                              <input
+                                   type="text"
+                                   className={`mt-4 h-12 w-80 rounded-lg border-[1px] border-blue-text px-2`}
+                                   /* className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
                                    errors.title
                                         ? "border-red-500"
                                         : "border-blue-text"
                               }   px-2`} */
-                              required
-                              placeholder="Titulo"
-                              onChange={handleInputChange}
-                              name="title"
-                         />
-                         {/* {errors.title && (
+                                   required
+                                   placeholder="Titulo"
+                                   onChange={handleInputChange}
+                                   name="title"
+                              />
+                              {/* {errors.title && (
                               <p className="text-red-500 text-xs">
                                    {errors.title}
-                              </p>
-                         )} */}
-                         <input
-                              type="number"
-                              name="monetary_goal"
-                              className={`mt-4 h-12 w-80 rounded-lg border-[1px] border-blue-text px-2`}
-                              /* className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
+                                   </p>
+                                   )} */}
+                              <input
+                                   type="number"
+                                   name="monetary_goal"
+                                   className={`mt-4 h-12 w-80 rounded-lg border-[1px] border-blue-text px-2`}
+                                   /* className={`mt-4 h-12 w-80 rounded-lg border-[1px] ${
                                    errors.goal
-                                        ? "border-red-500"
-                                        : "border-blue-text"
-                              }  px-2`} */
-                              onChange={handleInputChange}
-                              placeholder="Monto"
-                         />
-                         {/* {errors.goal && (
+                                   ? "border-red-500"
+                                   : "border-blue-text"
+                                   }  px-2`} */
+                                   onChange={handleInputChange}
+                                   placeholder="Monto"
+                              />
+                              {/* {errors.goal && (
                               <p className="text-red-500 text-xs">
-                                   {errors.goal}
+                              {errors.goal}
                               </p>
-                         )} */}
-                         <textarea
-                              name="description"
-                              className={`mt-4 h-52 w-80 rounded-lg border-[1px] border-blue-text p-3`}
-                              /* className={`mt-4 h-52 w-80 rounded-lg border-[1px] ${
+                              )} */}
+                              <textarea
+                                   name="description"
+                                   className={`mt-4 h-52 w-80 rounded-lg border-[1px] border-blue-text p-3`}
+                                   /* className={`mt-4 h-52 w-80 rounded-lg border-[1px] ${
                                    errors.description
-                                        ? "border-red-500"
-                                        : "border-blue-text"
-                              } p-3`} */
-                              onChange={handleInputChange}
-                              placeholder="Descripcion"
-                         />
-                         {/* {errors.description && (
+                                   ? "border-red-500"
+                                   : "border-blue-text"
+                                   } p-3`} */
+                                   onChange={handleInputChange}
+                                   placeholder="Descripcion"
+                              />
+                              {/* {errors.description && (
                               <p className="text-red-500 text-xs">
-                                   {errors.description}
+                              {errors.description}
                               </p>
-                         )} */}
-                         <button
-                              onClick={handleSubmit}
-                              className="bg-btn-orange h-42 w-110 rounded-full my-6 self-center"
-                         >
-                              <p className="text-white text-xs font-bold">
-                                   Publicar
-                              </p>
-                         </button>
-                    </form>
+                              )} */}
+                              <button
+                                   onClick={handleSubmit}
+                                   className="bg-btn-orange h-42 w-110 rounded-full my-6 self-center"
+                              >
+                                   <p className="text-white text-xs font-bold">
+                                        Publicar
+                                   </p>
+                              </button>
+                         </form>
+                    </div>
                </div>
-          </div>
+               {showPopUp && (
+                    <PopUp
+                         title={`Tu publicación se ha subido con éxito`}
+                         message="¡Mucha suerte!"
+                         
+                    />
+               )}
+          </>
      );
 };
 
