@@ -23,14 +23,26 @@ const Login = () => {
     dispatch(login({ email, password }))
       .then((response) => {
         console.log(response);
-        if (response.sucess === true) {
+        if (response.success) {
           alert("Login successful!");
         } else {
-          alert("Login failed: " + response.message);
+          // Mostrar mensajes de error unificados en caso de fallo
+          const errorMessage = Array.isArray(response.message)
+          ? response.message.join(', ')
+          : response.message;
+        alert("Login failed: " + errorMessage);
+          // alert("Login failed: " + response.message);
         }
       })
       .catch((error) => {
-        alert("An error occurred: " + error.response.data.message);
+        // Mejor manejo de errores en caso de que error.response no esté presente
+        const message = error.response && error.response.data.message
+        ? Array.isArray(error.response.data.message)
+          ? error.response.data.message.map(err => err.message).join(', ')
+          : error.response.data.message
+        : "An unexpected error occurred";
+      alert("An error occurred: " + message);
+        // alert("An error occurred: " + error.response.data.message);
       });
   };
 
@@ -56,6 +68,7 @@ const Login = () => {
                   value={email}
                   placeholder="Email"
                   onChange={(event) => setEmail(event.target.value)}
+                  required
                 />
               </div>
 
@@ -66,6 +79,7 @@ const Login = () => {
                   placeholder="Password"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)}
+                  required
                 />
               </div>
               <div className="flex">
@@ -84,7 +98,7 @@ const Login = () => {
                   className="block w-40 bg-forms h-42 rounded-full text-white rou font-semibold text-sm"
                 >
                   {/* {status.submitting ? "Enviando..." : "Iniciar sesión"} */}
-                  Iniciar Seccion
+                  Iniciar Sesión
                 </button>
               </div>
               <div className=" mt-4">
