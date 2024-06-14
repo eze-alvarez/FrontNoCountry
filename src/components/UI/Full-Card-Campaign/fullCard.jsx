@@ -4,7 +4,7 @@ const FullCard = ({ data }) => {
     const [currency, setCurrency] = useState("ARS");
     const [amount, setAmount] = useState("");
     const infoCard = data;
-    const progress = (infoCard.acumulate * 100) / infoCard.goal;
+    const progress = (infoCard.acumulate * 100) / infoCard.monetary_goal;
 
     const handleCurrency = (e) => {
         setCurrency(e.target.value);
@@ -24,11 +24,11 @@ const FullCard = ({ data }) => {
 
     return (
         <div className=" w-344 h-888 bg-main-white rounded-2xl m-auto flex flex-col md:w-full md:max-w-900 md:h-750 mt-16 mb-6">
-            <div className="w-full h-201 md:h-300">
+            <div className="w-full rounded-t-2xl h-201 md:h-300">
                 <img
-                    src={infoCard.img}
+                    src={infoCard.image}
                     alt="Card Campaign"
-                    className="object-fill w-full h-full"
+                    className="object-fill w-full h-full rounded-t-2xl"
                 />
             </div>
             <div className="flex flex-col md:flex-row h-full justify-evenly px-5 pb-6 pt-9">
@@ -88,7 +88,7 @@ const FullCard = ({ data }) => {
                             ${infoCard.acumulate}
                         </p>
                         <p className=" text-blue-text">
-                            Objetivo: ${infoCard.goal}
+                            Objetivo: ${infoCard.monetary_goal}
                         </p>
                     </div>
                 </div>

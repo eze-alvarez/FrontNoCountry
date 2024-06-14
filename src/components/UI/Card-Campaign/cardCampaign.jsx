@@ -6,14 +6,14 @@ import { Link } from "react-router-dom";
 
 const CardCampaign = ({ data }) => {
     const infoCard = data;
-    const progress = (infoCard.acumulate * 100) / infoCard.goal;
+    const progress = (infoCard.acumulate * 100) / infoCard.monetary_goal;
     return (
         <div className=" max-w-346 h-522 bg-main-white rounded-2xl m-auto flex flex-col">
-            <div className="w-full h-201">
+            <div className="w-full h-201 rounded-t-2xl">
                 <img
-                    src={infoCard.img}
+                    src={infoCard.image}
                     alt="Card Campaign"
-                    className="object-fill w-full h-full"
+                    className="object-fill w-full h-full  rounded-t-2xl"
                 />
             </div>
             <div className="flex flex-col h-full justify-between px-5 pb-6 pt-9">
@@ -78,7 +78,7 @@ const CardCampaign = ({ data }) => {
                         ${infoCard.acumulate}
                     </p>
                     <p className=" text-blue-text">
-                        Objetivo: ${infoCard.goal}
+                        Objetivo: ${infoCard.monetary_goal}
                     </p>
                 </div>
                 <Link className="self-end" to={`/campaign/${infoCard.id}`}>

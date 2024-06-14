@@ -7,12 +7,14 @@ import { getCampaign } from "../../redux/actions/actions";
 
 const AllCampaigns = () => {
 
-    const allCampaigns = useSelector((state) => state.campaigns);
+    const allCampaigns = useSelector((state) => state.campaignInfo.campaigns);
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getCampaign());
-    }, [allCampaigns]);
+    }, [dispatch]);
+
+    
 
     return (
         <div className="pt-16 my-4 md:my-14 ">
@@ -22,6 +24,7 @@ const AllCampaigns = () => {
             </div>
 
             <div className="flex flex-wrap justify-around ">
+                {/* Cambiar CardsInfo por  allCampaigns*/}
                 {CardsInfo.map((data, index) => {
                     return (
                         <div className="mb-16 " key={index}>

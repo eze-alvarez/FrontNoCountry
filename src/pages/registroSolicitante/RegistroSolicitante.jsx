@@ -16,10 +16,10 @@ const RegistroSolicitante = () => {
           name: "",
           surname: "",
           email: "",
-          bankInformation: "",
           password: "",
+          bankInformation: "",
           entityName: "",
-          isInstitution: false,
+          /* isInstitution: false, */
      });
 
      const handleChange = (event) => {

@@ -16,7 +16,7 @@ import {
 export const login = (data) => async (dispatch) => {
   try {
     const response = await axios.post("/users/login", data);
-    console.log("response", response);
+    console.log("response aa", response);
     const { token, user } = response.data;
 
     localStorage.setItem("token", token);
@@ -148,7 +148,7 @@ export const registerEntiti = (entitiData) => async (dispatch) => {
 };
 
 export function getCampaign() {
-  return async function (disátch) {
+  return async function (dispatch) {
     try {
       const response = await axios.get("/campaign");
 
@@ -160,7 +160,7 @@ export function getCampaign() {
         };
       });
 
-      disátch({
+      dispatch({
         type: GET_CAMPAIGN,
         payload: campaignDb,
       });
