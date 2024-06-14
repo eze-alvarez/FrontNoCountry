@@ -14,7 +14,7 @@ const AllCampaigns = () => {
         dispatch(getCampaign());
     }, [dispatch]);
 
-    
+    console.log(allCampaigns)
 
     return (
         <div className="pt-16 my-4 md:my-14 ">
@@ -25,7 +25,7 @@ const AllCampaigns = () => {
 
             <div className="flex flex-wrap justify-around ">
                 {/* Cambiar CardsInfo por  allCampaigns*/}
-                {CardsInfo.map((data, index) => {
+                {allCampaigns.map((data, index) => {
                     return (
                         <div className="mb-16 " key={index}>
                             <CardCampaign key={index} data={data} />
