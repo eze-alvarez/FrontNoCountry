@@ -24,12 +24,17 @@ const CreateCampaign = () => {
      const handleInputChange = (e) => {
           const { name, value, files } = e.target;
           
-          console.log(files[0])
-          if(name === "image") {
+          
+          if(name === "image" && files && files.length > 0) {
                setInputs({
                    ...inputs,
                     image: files[0],
                });
+               const reader = new FileReader();
+               reader.onloadend = () => {
+                    setPreview(reader.result);
+                }
+                reader.readAsDataURL(files[0]);
           } else {
                setInputs({
                    ...inputs,
@@ -59,9 +64,9 @@ const CreateCampaign = () => {
           formData.append("description", inputs.description);
           formData.append("entitiId", inputs.entitiId);
 
-          const result = await dispatch(createCampaign(inputs));
+          const result = await dispatch(createCampaign(formData));
           
-          console.log(inputs)
+          
 
           if (result.success) {
                setInputs({
