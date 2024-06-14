@@ -39,7 +39,7 @@ const Register = () => {
           setShowPopUp(true);
           // Después de 5 segundos, redirige al usuario al login
           setTimeout(() => {
-            navigate("/login");
+            navigate("/");
           }, 2000);
         } else {
           // Mostrar mensajes de error unificados en caso de fallo
@@ -70,7 +70,7 @@ const Register = () => {
   return (
     <>
 
-      <div className={`h-screen sm:flex sm:flex-col mt-14 ${showPopUp? "hidden": "flex" }`}>
+      <div className={`h-screen sm:flex-col mt-14 ${showPopUp? "hidden": "flex" }`}>
         <div className=" lg:flex justify-center items-center my-14 w-full">
 
           <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">

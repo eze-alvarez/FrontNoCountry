@@ -137,13 +137,13 @@ export const registerEntiti = (entitiData) => async (dispatch) => {
       type: REGISTER_ENTITI_SUCCESS,
       payload: entity,
     });
-    return { sucess: true };
+    return { success: true };
   } catch (error) {
     dispatch({
       type: REGISTER_ENTITI_FAILURE,
       payload: error.response.data.message,
     });
-    return { sucess: false, message: error.response.data.message };
+    return { success: false, message: error.response.data.message };
   }
 };
 
