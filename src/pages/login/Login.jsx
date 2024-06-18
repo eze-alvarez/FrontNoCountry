@@ -56,34 +56,36 @@ const Login = () => {
      return (
           <>
                <div
-                    className={`h-screen  sm:flex-col mt-14 ${
+                    className={` pt-14 lg:pt-[68px] sm:flex-col  bg-purple-400  ${
                          showPopUp ? "hidden" : "flex"
-                    }`}
+                    }  md:h-[calc(100vh-159px)]
+                    md:landscape:h-auto lg:landscape:h-[calc(100vh-159px)] lg:landscape:pt-[88px] lg:landscape:pb-[20px]`}
                >
-                    <div className=" lg:flex justify-center w-full items-center my-14 ">
-                         <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
-                              <div className="mt-14">
-                                   <h1 className="text-white  ">
-                                        Iniciá tu sesión
-                                   </h1>
+                    <div className=" w-full mt-4 mb-11 lg:mt-0 lg:mb-0 sm:flex bg-green-300 md:h-full">
+                         <div className="bg-forms h-[176px] flex flex-col justify-center items-center  sm:flex-grow sm:h-auto landscape:justify-start landscape:pt-16 sm:landscape:gap-10 md:gap-20 md:landscape:justify-center md:landscape:pt-0 lg:landscape:gap-24">
+
+                              <h1 className="text-white text-left font-bold text-[24px]">
+                                   Iniciá tu sesión
+                              </h1>
+
+                              <div>
                                    <img
-                                        src={logoblanco}
-                                        alt="logo"
-                                        className=" h-[3rem] w-[12rem] lg:ml-[16rem] mt-[8rem]"
-                                   />
+                                   src={logoblanco}
+                                   alt="logo"
+                                   className=" hidden landscape:sm:flex md:flex h-[3rem] "/>
                               </div>
                          </div>
 
 
-                         <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
+                         <div className=" bg-yellow-200 mt-9 sm:mt-0 md:w-[473px] landscape:md:w-[400px] md:landscape:py-12 md:flex md:items-center lg:landscape:py-0">
                               <form
                                    onSubmit={handleSubmit}
-                                   className="bg-white w-80"
+                                   className=" w-[300px] h-[442px] bg-red-300 px-4 mx-auto pt-4 md:w-[337px]"
                               >
-                                   <h1 className="text-blue-title font-bold text-2xl text-left py-4">
+                                   <h1 className="text-blue-title font-bold text-2xl text-left">
                                         Bienvenido
                                    </h1>
-                                   <div className="flex items-center border-[1px] py-2 px-3 rounded-2xl  border-blue-text mb-4">
+                                   <div className="flex items-center border-[1px] py-2 px-3 mt-4 rounded-2xl  border-blue-text ">
                                         <input
                                              className={`pl-2 outline-none border-none w-full`}
                                              type="email"
@@ -97,7 +99,7 @@ const Login = () => {
                                    </div>
 
 
-                                   <div className="flex items-center border-[1px] py-2 px-3  border-blue-text rounded-2xl">
+                                   <div className="flex items-center border-[1px] py-2 px-3 mt-4 border-blue-text rounded-2xl">
                                         <input
                                              className={`pl-2 outline-none border-none w-full`}
                                              type="password"
@@ -117,30 +119,30 @@ const Login = () => {
               </Link> */}
 
                                         <Link to="/registro">
-                                             <p className="py-4 text-blue-text text-sm ml-28">
+                                             <p className="mt-4 text-blue-text text-sm ml-28">
                                                   Olvidaste tu contraseña?
                                              </p>
                                         </Link>
                                    </div>
-                                   <div className="mt-4 pl-20">
+                                   <div className="my-6 ">
                                         <button
                                              type="submit"
-                                             className="block w-40 bg-forms h-42 rounded-full text-white rou font-semibold text-sm"
+                                             className="block w-40 bg-forms h-42 rounded-full text-white font-semibold text-sm mx-auto"
                                         >
                                              {/* {status.submitting ? "Enviando..." : "Iniciar sesión"} */}
                                              Iniciar Sesión
                                         </button>
                                    </div>
-                                   <div className=" mt-4">
+                                   <div>
                                         <Link to="/registro">
                                              <p className="text-blue-text text-sm text-center">
                                                   ¿Aún no tenés cuenta?
                                              </p>
                                         </Link>
                                    </div>
-                                   <div className="pl-20 pb-6 mt-4">
-                                        <Link to="/RegistroSolicitante">
-                                             <p className="py-4 font-semibold text-blue-title">
+                                   <div className="mt-6">
+                                        <Link to="/RegistroSolicitante" >
+                                             <p className="font-semibold text-blue-title text-center">
                                                   Solicitar Donación
                                              </p>
                                         </Link>

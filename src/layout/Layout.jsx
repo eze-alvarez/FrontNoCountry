@@ -6,9 +6,9 @@ import Resolution from "../pages/Error/Resolution/resolution";
 const Layout = ({ children }) => {
     return (
         <>
-            <div className="bg-degradado min-h-screen max-[375px]:hidden">
+            <div className="bg-degradado min-h-screen max-[319px]:hidden">
                 <Navbar />
-                <div className="max-w-1120 m-auto min-w-344 ">
+                <div className="max-w-1120 m-auto min-w-[320px] ">
                     {children}
                 </div>
                 <Footer />

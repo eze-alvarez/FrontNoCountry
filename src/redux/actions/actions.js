@@ -87,8 +87,7 @@ export const registerUser = (userData) => async (dispatch) => {
     console.log("response desde registerUser", response);
     const { token, user } = response.data;
 
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(user));
+   
 
     dispatch({
       type: REGISTER_USER_SUCCESS,
