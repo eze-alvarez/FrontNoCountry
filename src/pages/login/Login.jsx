@@ -56,12 +56,12 @@ const Login = () => {
      return (
           <>
                <div
-                    className={` pt-14 lg:pt-[68px] sm:flex-col  bg-purple-400  ${
+                    className={` pt-14 lg:pt-[68px] sm:flex-col    ${
                          showPopUp ? "hidden" : "flex"
                     }  md:h-[calc(100vh-159px)]
                     md:landscape:h-auto lg:landscape:h-[calc(100vh-159px)] lg:landscape:pt-[88px] lg:landscape:pb-[20px]`}
                >
-                    <div className=" w-full mt-4 mb-11 lg:mt-0 lg:mb-0 sm:flex bg-green-300 md:h-full">
+                    <div className=" w-full mt-4 mb-11 lg:mt-0 lg:mb-0 sm:flex  md:h-full">
                          <div className="bg-forms h-[176px] flex flex-col justify-center items-center  sm:flex-grow sm:h-auto landscape:justify-start landscape:pt-16 sm:landscape:gap-10 md:gap-20 md:landscape:justify-center md:landscape:pt-0 lg:landscape:gap-24">
 
                               <h1 className="text-white text-left font-bold text-[24px]">
@@ -77,10 +77,10 @@ const Login = () => {
                          </div>
 
 
-                         <div className=" bg-yellow-200 mt-9 sm:mt-0 md:w-[473px] landscape:md:w-[400px] md:landscape:py-12 md:flex md:items-center lg:landscape:py-0">
+                         <div className="bg-main-white mt-9 sm:mt-0 md:w-[473px] landscape:md:w-[400px] md:landscape:py-12 md:flex md:items-center lg:landscape:py-0">
                               <form
                                    onSubmit={handleSubmit}
-                                   className=" w-[300px] h-[442px] bg-red-300 px-4 mx-auto pt-4 md:w-[337px]"
+                                   className=" w-[300px] h-[442px] bg-white px-4 mx-auto pt-4 md:w-[337px]"
                               >
                                    <h1 className="text-blue-title font-bold text-2xl text-left">
                                         Bienvenido
