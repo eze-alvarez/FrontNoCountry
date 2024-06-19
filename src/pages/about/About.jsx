@@ -7,7 +7,7 @@ import Firefigthers from "../../assets/Images/CardsImg/Firefigthers.png"
 const About = () => {
   return (
     <>
-      <div className="h-auto flex flex-col py-14 px-6 gap-2 sm:px-8 md:px-20 lg:px-9  items-center justify-center md:justify-normal  md:landscape:h-auto md:h-[calc(100vh-159px)] lg:landscape:h-[calc(100vh-159px)]">
+      <div className="h-auto flex flex-col pt-14 px-6 gap-2 sm:px-8 md:px-20 lg:px-9  items-center justify-center md:justify-normal  md:landscape:h-auto md:h-[calc(100vh-159px)] lg:landscape:min-h-[calc(100vh-159px)] lg:landscape:h-auto">
         <h1 className=" mt-6 text-center text-3xl sm:text-4xl lg:text-5xl text tracking-wider sm:mb-4">
           Sobre Nosotros
         </h1>
