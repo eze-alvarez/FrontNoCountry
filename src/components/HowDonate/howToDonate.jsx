@@ -9,7 +9,7 @@ import Carousel from "../UI/Carousel/carousel";
 const HowToDonate = () => {
     return (
         <div className="flex flex-col mb-11 mt-9">
-            <h1 className="mb-4">¿Como donar?</h1>
+            <h1 className="">¿Como donar?</h1>
             <Carousel>
                 <CardHowTo
                     IMG={Img1}

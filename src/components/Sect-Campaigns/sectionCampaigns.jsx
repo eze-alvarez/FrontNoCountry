@@ -7,16 +7,19 @@ import { Link } from "react-router-dom";
 
 const SectionCampaigns = () => {
     return (
-        <div className="flex flex-col mt-9 md:mt-20 ">
-            <h1 className="mb-4 md:mb-14">Campañas</h1>
-            <Carousel>
-                {CardsInfo.map((card, index) => (
-                    <CardCampaign key={index} data={card} />
-                ))}
-            </Carousel>
+        <div className="flex flex-col pt-12 md:mt-20 ">
+            <h1 className=" md:mb-4">Campañas</h1>
+            <div className="w-full">
+                <Carousel>
+                    {CardsInfo.map((card, index) => (
+                        <CardCampaign key={index} data={card} />
+                    ))}
+                </Carousel>
+
+            </div>
             <Link to="/allCampaigns">
                 <u className=" text-blue-title" >
-                    <p className="text-2xl text-center text-blue-title font-bold mt-12 mb-11 md:mt-20 md:mb-20">
+                    <p className="text-2xl text-center text-blue-title font-bold pt-16 mb-11 md:pt-20 md:mb-20">
                         Ver Todas las Campañas
                     </p>
                 </u>

@@ -8,15 +8,15 @@ const CardCampaign = ({ data }) => {
     const infoCard = data;
     const progress = (infoCard.acumulate * 100) / infoCard.monetary_goal;
     return (
-        <div className=" max-w-346 h-522 bg-main-white rounded-2xl m-auto flex flex-col">
-            <div className="w-full h-201 rounded-t-2xl">
+        <div className="w-[95%] min-w-[300px] max-w-346 h-[475px] bg-main-white shadow-card-shadow my-10 rounded-2xl m-auto flex flex-col">
+            <div className="w-full h-[270px] rounded-t-2xl overflow-hidden ">
                 <img
                     src={infoCard.image}
                     alt="Card Campaign"
-                    className="object-fill w-full h-full  rounded-t-2xl"
+                    className="object-fill max-w-full max-h-full w-full h-auto block  rounded-t-2xl"
                 />
             </div>
-            <div className="flex flex-col h-full justify-between px-5 pb-6 pt-9">
+            <div className="flex flex-col h-full justify-between px-3 pb-6 pt-9">
                 <h1 className=" mb-2 text-start">{infoCard.title}</h1>
 
                 <p
@@ -33,7 +33,7 @@ const CardCampaign = ({ data }) => {
                 </p>
 
                 {/* Barra */}
-                <div className="grow flex items-center justify-between relative w-11/12 text-center">
+                <div className="grow mx-auto flex items-center justify-between relative w-[90%] text-center">
                     <div
                         style={{ left: `${progress}%` }}
                         className=" absolute w-1 h-1 flex items-center justify-center"
@@ -44,7 +44,7 @@ const CardCampaign = ({ data }) => {
                                     ? { backgroundColor: "#FFB905" }
                                     : { backgroundColor: "#2EBF7E" }
                             }
-                            className="w-11 h-11 absolute rounded-full flex items-center justify-center"
+                            className="w-10 h-10 absolute rounded-full flex items-center justify-center"
                         >
                             <img
                                 className="object-contain"
@@ -54,7 +54,7 @@ const CardCampaign = ({ data }) => {
                         </div>
                     </div>
 
-                    <div className="flex w-full h-4 bg-gray-200 rounded-full overflow-hidden border-solid border-2">
+                    <div className=" flex w-full h-4 bg-gray-200 rounded-full overflow-hidden border-solid border-2">
                         <div
                             className="flex flex-col justify-center overflow-hidden bg-orange-bar whitespace-nowrap "
                             style={{ width: `${progress}%`, maxWidth: "60%" }}
