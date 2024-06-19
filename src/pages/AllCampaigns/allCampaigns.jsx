@@ -14,7 +14,6 @@ const AllCampaigns = () => {
         dispatch(getCampaign());
     }, [dispatch]);
 
-    console.log(allCampaigns)
 
     return (
         <div className="pt-16 my-4 md:my-14 ">

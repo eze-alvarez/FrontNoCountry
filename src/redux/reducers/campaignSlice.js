@@ -1,6 +1,7 @@
 import {
   CREATE_CAMPAIGN_FAILURE,
   CREATE_CAMPAIGN_SUCCESS,
+  ENTITI_LOGIN,
   GET_CAMPAIGN,
   GET_CAMPAIGN_ID,
   LOGIN_FAILURE,
@@ -85,6 +86,12 @@ function rootReducer(state = initialState, { type, payload }) {
         ...state,
         createCampaignError: payload,
       };
+    case ENTITI_LOGIN:
+      return{
+        ...state,
+        isAnEntity: payload,
+        error: null,
+      }
     default:
       return {
         ...state,

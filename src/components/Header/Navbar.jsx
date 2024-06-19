@@ -3,25 +3,56 @@ import logoNavBlue from '../../assets/Images/headerImg/logo azul.png';
 import {FaWindowClose, FaBars } from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
 
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {  logout } from "../../redux/actions/actions";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {  logout, typeUser } from "../../redux/actions/actions";
 
 import Footer from '../Footer/Footer';
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   /* const [logUser, setLogUser] = useState(false); */
+  const [create, setCreate] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = localStorage.getItem('token')? true : false;
+  const user = localStorage.getItem('user')? JSON.parse(localStorage.getItem('user')) : null;
+  
+
+  const entity = useSelector(
+    (state) => state.campaignInfo.isAnEntity
+  );
+  
+  /* const isEntities = typeUser(localStorage.getItem('user')); */
+  
+
+
+  useEffect(() => {
+    if(isAuthenticated){
+      dispatch(typeUser(user.email))
+    }
+  }, [dispatch, isAuthenticated, user]);
+
+  useEffect(() => {
+    setCreate(entity); 
+  }, [entity]);
+  
+  console.log("create",create)
+  /* console.log("isEntitie", isEntities); */
+
+
   const handleNav = () => {
     setMenuOpen(!menuOpen);
   }
 
   const handleLogout = () => {
     dispatch(logout());
-    navigate("/");
+    setTimeout(() => {
+      navigate("/");
+      window.location.reload();
+      
+    }, 500);
+
   };
 
   return (
@@ -40,8 +71,8 @@ export default function Navbar() {
         </NavLink>
 
         {/* Desktop Menu */}
-        <div className="hidden font-medium tracking-wider landscape:flex sm:flex sm:gap-4 md:gap-14 xl:gap-36">
-          <ul className="flex items-center sm:gap-3 md:gap-5 xl:gap-x-20  text-xs xl:text-base ">
+        <div className="hidden font-medium tracking-wider landscape:flex sm:flex sm:gap-4 md:gap-14 ">
+          <ul className="flex items-center sm:gap-3 md:gap-5   text-xs xl:text-base ">
             
             <NavLink to="/quienes-somos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
               <li className=" hover:scale-[1.1]">¿Quiénes somos?</li>
@@ -52,18 +83,26 @@ export default function Navbar() {
             <NavLink to="/contactanos" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
               <li className=" hover:scale-[1.1]">Contactanos</li>
             </NavLink>
+
+          {
+            create && (
+              <NavLink to="/createCampaign" className={({ isActive }) => isActive ? "text-orange-500" : "text-blue-title"}>
+              <li className=" hover:scale-[1.1]"><u>Crear campaña</u></li>
+            </NavLink>
+            )
+          }
           </ul>
 
           {isAuthenticated ? ( // Cambio: Mostrar "Cerrar sesión" si el usuario está autenticado
             <button
-              className="bg-btn-orange rounded-full px-3 xl:px-4 py-2 hidden sm:grid sm:place-content-center tracking-wider"
+              className="bg-btn-orange rounded-full px-3  py-2 hidden sm:grid sm:place-content-center tracking-wider"
               onClick={handleLogout} // Cambio: Llamar a handleLogout al hacer clic en "Cerrar sesión"
             >
               <p className="text-white text-xs xl:text-base font-medium">Cerrar sesión</p> {/* Cambio: Texto del botón cuando está autenticado */}
             </button>
           ) : (
             <NavLink to="/login">
-              <button className="bg-white rounded-full px-3 xl:px-4 py-2 hidden sm:grid sm:place-content-center tracking-wider">
+              <button className="bg-white rounded-full px-3  py-2 hidden sm:grid sm:place-content-center tracking-wider">
                 <p className="text-blue-title text-xs xl:text-base font-medium">Iniciar sesión</p> {/* Cambio: Texto del botón cuando no está autenticado */}
               </button>
             </NavLink>
@@ -121,6 +160,16 @@ export default function Navbar() {
               {/* <NavLink to="/login" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className="">Iniciar sesión</li>
               </NavLink> */}
+              
+              {
+                create && (
+                  <NavLink to="/createCampaign" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
+                  <li className="mt-11"><u>Crear campaña</u></li>
+                </NavLink>
+                )
+              }
+              
+
               <NavLink to="/" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className="mt-11">Home</li>
               </NavLink>
@@ -129,7 +178,8 @@ export default function Navbar() {
               </NavLink>
               <NavLink to="/allCampaigns" className={({ isActive }) => isActive ? "text-orange-500" : "text-white"} onClick={() => setMenuOpen(false)}>
                 <li className=" mt-11">Campañas</li>
-              </NavLink>  
+              </NavLink>
+
             </ul>
           </div>
 

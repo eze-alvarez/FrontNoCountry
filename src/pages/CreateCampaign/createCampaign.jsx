@@ -79,7 +79,7 @@ const CreateCampaign = () => {
                setShowPopUp(true);
                setTimeout(() => {
                     navigate("/");
-               }, 3000);
+               }, 1000);
           } else {
                alert("Campaña no creada" + result.message);
           }

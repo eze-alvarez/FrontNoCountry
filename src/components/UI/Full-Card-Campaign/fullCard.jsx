@@ -6,6 +6,8 @@ const FullCard = ({ data }) => {
     const infoCard = data;
     const progress = (infoCard.acumulate * 100) / infoCard.monetary_goal;
 
+    
+
     const handleCurrency = (e) => {
         setCurrency(e.target.value);
     };
@@ -23,7 +25,7 @@ const FullCard = ({ data }) => {
     };
 
     return (
-        <div className=" w-344 h-888 bg-main-white rounded-2xl m-auto flex flex-col md:w-full md:max-w-900 md:h-750 mt-16 mb-6">
+        <div className=" w-[300px]  h-[940px] bg-main-white shadow-card-shadow rounded-2xl m-auto flex flex-col md:w-full md:max-w-900 md:h-750 mt-16 mb-6">
             <div className="w-full rounded-t-2xl h-201 md:h-300">
                 <img
                     src={infoCard.image}

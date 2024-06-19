@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import { CardsInfo } from "../../constants/cardsInfo";
 import Carousel from "../UI/Carousel/carousel";
 
@@ -28,59 +28,45 @@ const SectionCampaigns = () => {
     );
 };
 
-export default SectionCampaigns;
+export default SectionCampaigns; */
 
 /* ~~~~~~~~~~~~~~~~~ Nuevos Cambios NO BORRAR ~~~~~~~~~~~~~~~~~ */
 
-/* import React, { useEffect } from "react";
-import { CardsInfo } from "../../constants/cardsInfo";
+import React, { useEffect } from "react";
 import Carousel from "../UI/Carousel/carousel";
 
 import CardCampaign from "../UI/Card-Campaign/cardCampaign";
 import { Link } from "react-router-dom";
 
-import { fetchData } from "../../redux/reducers/campaignSlice";
+import { getCampaign } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-
 const SectionCampaigns = () => {
-    const dispatch = useDispatch();
-    const { loading, data, error } = useSelector((state) => state.data);
+     const allCampaigns = useSelector((state) => state.campaignInfo.campaigns);
+     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchData());
-    }, [dispatch]);
+          dispatch(getCampaign());
+     }, [dispatch]);
 
-    if (loading) {
-        return <div>Cargando...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
-    return (
-        <div className="flex flex-col mb-11 mt-9">
-            <h1 className="mb-4">Campañas</h1>
-            {
-                data != null && !loading ? (
+     return (
+          <div className="flex flex-col mb-11 mt-9">
+               <h1 className="mb-4">Campañas</h1>
+               {allCampaigns.length > 0? (
                     <Carousel>
-                        {data.map((card, index) => (
-                            <CardCampaign key={index} data={card} />
-                        ))}
+                         {allCampaigns.map((card, index) => (
+                              <CardCampaign key={index} data={card} />
+                         ))}
                     </Carousel>
-                ) : (
-                    <div>No hay Datos</div>
-                )
-            }
-            <Link to="/allCampaigns">
-                <p className="text-2xl text-center text-blue-title font-bold mt-9 mb-11">
-                    Ver Todas las Campañas
-                </p>
-            </Link>
-        </div>
-    );
+               ): <div>Cargando...</div>}
+
+               <Link to="/allCampaigns">
+                    <p className="text-2xl text-center text-blue-title font-bold mt-9 mb-11">
+                        <u>Ver Todas las Campañas</u>
+                    </p>
+               </Link>
+          </div>
+     );
 };
 
 export default SectionCampaigns;
- */
