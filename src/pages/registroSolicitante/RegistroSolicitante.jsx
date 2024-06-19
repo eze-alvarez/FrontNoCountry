@@ -37,7 +37,7 @@ const RegistroSolicitante = () => {
                     if (response.success) {
                          setShowPopUp(true); // Mostrar PopUp después del registro exitoso
                          setTimeout(() => {
-                              navigate("/test"); // Redirigir después de 3 segundos
+                              navigate("/createCampaign"); // Redirigir después de 3 segundos
                          }, 2000);
                          
                     } else {

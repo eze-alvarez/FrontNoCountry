@@ -28,7 +28,7 @@ const Login = () => {
                       setShowPopUp(true);
                          setTimeout(() => {
                               navigate("/");
-                         }, 3000);
+                         }, 1000);
                     } else {
                          // Mostrar mensajes de error unificados en caso de fallo
                          const errorMessage = Array.isArray(response.message)

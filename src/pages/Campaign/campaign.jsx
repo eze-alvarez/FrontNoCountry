@@ -1,16 +1,33 @@
-
-import { useParams } from 'react-router-dom'
-import { CardsInfo } from '../../constants/cardsInfo'
-import FullCard from '../../components/UI/Full-Card-Campaign/fullCard'
+import { useParams } from "react-router-dom";
+import FullCard from "../../components/UI/Full-Card-Campaign/fullCard";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCampaignId } from "../../redux/actions/actions";
 
 const Campaign = () => {
-     const { id } = useParams()
-  return (
-    <div className='px-4'>
-     <h1 className='my-4' >Campaña</h1>
-     <FullCard data={CardsInfo[id]} />
-    </div>
-  )
-}
+     const selectedCampaign = useSelector(
+          (state) => state.campaignInfo.selectedCampaign
+     );
+     const dispatch = useDispatch();
+     const { index } = useParams();
 
-export default Campaign
+     useEffect(() => {
+          const fetchData = async () => {
+               await dispatch(getCampaignId(index));
+          };
+          fetchData();
+     }, [index]);
+
+     if (!selectedCampaign) {
+          return <p>Cargando...</p>;
+     }
+
+     return (
+          <>
+               <h1 className="my-4">Campaña</h1>
+               <FullCard data={selectedCampaign} />
+          </>
+     );
+};
+
+export default Campaign;

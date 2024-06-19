@@ -8,12 +8,12 @@ const CardCampaign = ({ data }) => {
     const infoCard = data;
     const progress = (infoCard.acumulate * 100) / infoCard.monetary_goal;
     return (
-        <div className="w-[95%] min-w-[300px] max-w-346 h-[475px] bg-main-white shadow-card-shadow my-10 rounded-2xl m-auto flex flex-col">
-            <div className="w-full h-[270px] rounded-t-2xl overflow-hidden ">
+        <div className=" w-[300px] sm:w-[346px] h-[475px] bg-main-white shadow-card-shadow my-10 rounded-2xl m-auto flex flex-col">
+            <div className="w-auto h-[270px] rounded-t-2xl overflow-hidden ">
                 <img
                     src={infoCard.image}
                     alt="Card Campaign"
-                    className="object-fill max-w-full max-h-full w-full h-auto block  rounded-t-2xl"
+                    className="object-fill max-w-full max-h-full w-full h-full h-auto block  rounded-t-2xl"
                 />
             </div>
             <div className="flex flex-col h-full justify-between px-3 pb-6 pt-9">

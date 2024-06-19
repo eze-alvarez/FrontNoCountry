@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   CREATE_CAMPAIGN_FAILURE,
   CREATE_CAMPAIGN_SUCCESS,
+  ENTITI_LOGIN,
   GET_CAMPAIGN,
   GET_CAMPAIGN_ID,
   LOGIN_FAILURE,
@@ -68,6 +69,30 @@ export const login = (data) => async (dispatch) => {
     // };
   }
 };
+
+export const typeUser = (usr) => async (dispatch) => {
+  try {
+    const response = await axios.get("/entities");
+    var isEntitie = false
+    const allEntitie = response.data;
+    if(allEntitie.filter(register => register.email === usr).length > 0){
+      console.log("True",usr)
+      isEntitie = true
+    }else{
+      console.log("False",usr)
+      isEntitie = false
+    }
+
+    
+    dispatch({
+      type: ENTITI_LOGIN,
+      payload: isEntitie,
+    });
+  }
+  catch (error) {
+    console.error("Error occurred :", error);
+  }
+}
 
 export const logout = () => (dispatch) => {
   // Eliminar token del localStorage u otros datos de sesión
@@ -180,7 +205,7 @@ export const getCampaignId = (id) => async (dispatch) => {
     });
   } catch (error) {
     console.error("Error occurred while fetching campaign by ID:", error);
-    alert(error.message);
+    
   }
 };
 

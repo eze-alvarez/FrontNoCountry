@@ -40,7 +40,7 @@ const Register = () => {
           // Después de 5 segundos, redirige al usuario al login
           setTimeout(() => {
             navigate("/");
-          }, 2000);
+          }, 1000);
         } else {
           // Mostrar mensajes de error unificados en caso de fallo
           const errorMessage = Array.isArray(response.message)

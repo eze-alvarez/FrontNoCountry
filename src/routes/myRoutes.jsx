@@ -25,14 +25,14 @@ const MyRoutes = () => {
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/campaign/:id" element={<Campaign />} />
+            <Route path="/campaign/:index" element={<Campaign />} />
             <Route path="/allCampaigns" element={<AllCampaigns />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
             <Route path="/registroSolicitante" element={<RegistroSolicitante />} />
             <Route path="/quienes-somos" element={<About/>} />
             <Route path="/contactanos" element={<Contactos/>} />
-            <Route path="/test" element={<CreateCampaign />} />
+            <Route path="/createCampaign" element={<CreateCampaign />} />
 
             <Route path="*" element={<Error />} />
           </Routes>
