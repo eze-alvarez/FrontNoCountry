@@ -69,86 +69,104 @@ const Register = () => {
 
   return (
     <>
+      <div
+        className={` pt-14 lg:pt-[68px] sm:flex-col   ${
+          showPopUp ? "hidden" : "flex"
+     }  md:h-[calc(100vh-159px)]
+     md:landscape:h-auto lg:landscape:h-[calc(100vh-159px)] lg:landscape:pt-[88px] lg:landscape:pb-[20px]`}
+      >
+        <div className="w-full mt-4 mb-11 lg:mt-0 lg:mb-0 sm:flex md:h-full">
+          <div className="bg-forms h-[176px] flex flex-col justify-center items-center  sm:flex-grow sm:h-auto landscape:justify-start landscape:pt-16 sm:landscape:gap-10 md:gap-20 lg:landscape:justify-center lg:landscape:pt-0 lg:landscape:gap-24">
+            <h1 className="text-white font-bold text-[24px] text-center">
+            Antes de seguir,<br />
+            queremos conocerte.
+            </h1>
 
-      <div className={`h-screen sm:flex-col mt-14 ${showPopUp? "hidden": "flex" }`}>
-        <div className=" lg:flex justify-center items-center my-14 w-full">
-
-          <div className="bg-forms h-36 lg:h-[36rem] lg:w-[45rem] content-center">
-          <div className="mt-14">
-              <h1><p  className="text-white  "> Antes de seguir, <br/> queremos conocerte</p></h1>
-              <img src={logoblanco} alt="logo" className=" h-[3rem] w-[12rem] lg:ml-[16rem] mt-[8rem]" />
+            <div>
+              <img
+                src={logoblanco}
+                alt="logo"
+                className=" hidden landscape:sm:flex md:flex h-[3rem] "
+              />
             </div>
           </div>
 
-          <div className="flex justify-center items-center bg-white lg:h-[36rem] lg:w-[33rem]  ">
-          <form onSubmit={handleSubmit} className="bg-white w-80 mt-[4rem]">
 
-            <h1 className="text-blue-title font-bold text-2xl text-left py-4">Ingresá tus datos</h1>
-              <div className="flex gap-2">
-              <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
-              <input
-                className={"pl-2 outline-none border-none w-full"}
-                type="text"
-                name="name"
-                placeholder="Nombre"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
-            </div>
+          <div className="bg-main-white mt-9 sm:mt-0 md:w-[473px] landscape:md:w-[400px] md:landscape:py-12 md:flex md:items-center lg:landscape:py-0">
+            <form
+              onSubmit={handleSubmit}
+              className=" w-[300px] h-[418px] bg-white px-4 mx-auto pt-4 md:w-[337px]"
+            >
+              <h1 className="text-blue-title font-bold text-2xl text-left ">
+                Ingresá tus datos
+              </h1>
+              <div className="flex gap-2 mt-4">
+                <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl">
+                  <input
+                    className={"pl-2 outline-none border-none w-full"}
+                    type="text"
+                    name="name"
+                    placeholder="Nombre"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
 
-            <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
-              <input
-                className={`pl-2 outline-none border-none w-full`}
-                type="text"
-                name="surname"
-                placeholder="Apellido"
-                value={formData.surname}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            </div>
-            <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
-              <input
-                className={`pl-2 outline-none border-none w-full`}
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl mb-4">
-              <input
-                className={`pl-2 outline-none border-none w-full`}
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            {/* <Link to="/login" className="text-blue-500 ml-2">
+                <div className="flex items-center border-[1px]  border-blue-text py-2 px-3 rounded-2xl ">
+                  <input
+                    className={`pl-2 outline-none border-none w-full`}
+                    type="text"
+                    name="surname"
+                    placeholder="Apellido"
+                    value={formData.surname}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="flex items-center border-[1px] mt-4  border-blue-text py-2 px-3 rounded-2xl ">
+                <input
+                  className={`pl-2 outline-none border-none w-full`}
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="flex items-center border-[1px] mt-4 border-blue-text py-2 px-3 rounded-2xl">
+                <input
+                  className={`pl-2 outline-none border-none w-full`}
+                  type="password"
+                  name="password"
+                  placeholder="Contraseña"
+                  value={formData.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              {/* <Link to="/login" className="text-blue-500 ml-2">
               ¿Ya tienes una cuenta?
             </Link> */}
-            <div className="flex justify-center items-center mb-32 mt-6 bg-white">
-              <button
-                className=" bg-forms text-white font-bold py-2 px-4 rounded-2xl"
-                type="submit"
-              >
-                {/* {status.submitting ? "Registrando..." : "Registrarme"} */}
-                Registrarme
-              </button>
-            </div>
-          </form>
+              <div className="flex justify-center items-center mt-6 bg-white">
+                <button
+                  className=" bg-forms text-white font-bold py-2 px-4 rounded-2xl"
+                  type="submit"
+                >
+                  {/* {status.submitting ? "Registrando..." : "Registrarme"} */}
+                  Registrarme
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-      </div>
-       {/* Mostrar PopUp si showPopUp es true */}
-       {showPopUp && (
+      {/* Mostrar PopUp si showPopUp es true */}
+      {showPopUp && (
         <PopUp
           title={`${formData.name} ${formData.surname}`}
           message="Gracias por unirte a"

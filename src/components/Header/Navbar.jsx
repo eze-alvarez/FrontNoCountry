@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed w-full h-14 lg:h-[68px]  z-30 top-0 text-blue-title bg-nav  ">
-      <div className=" mx-auto  2xl:max-w-[1400px] flex justify-between items-center h-full w-full px-8 xl:px-20">
+      <div className=" mx-auto lg:max-w-[1280px] flex justify-between items-center h-full w-full px-8 xl:px-20">
 
 
         {/* Logo */}

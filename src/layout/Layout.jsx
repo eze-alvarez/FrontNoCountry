@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         <>
             <div className="bg-degradado min-h-screen max-[319px]:hidden">
                 <Navbar />
-                <div className="max-w-1120 m-auto min-w-320 ">
+                <div className="max-w-1120 m-auto min-w-[320px] ">
                     {children}
                 </div>
                 <Footer />
